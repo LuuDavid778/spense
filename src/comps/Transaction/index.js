@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 
 const Container = styled.div`
-min-width:356px;
-max-width:450px;
+min-width:300px;
+max-width:356px;
 min-height:59px;
 max-height:80px;
 border-radius: 5px;
@@ -106,7 +106,7 @@ const Transaction = ({category, item, cost, status, size, color}) =>{
 
         <Editcont></Editcont>
         <Deletecont></Deletecont>
-        
+
         </Container>
 
 }

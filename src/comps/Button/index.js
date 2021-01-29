@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import add from '/add.png'
 const Container = styled.div`
 min-height: 50px;
 max-width: ${props => props.width ? props.width : "158px"};
@@ -12,17 +12,29 @@ align-items:center;
 justify-content:center;
 `;
 
-const Button = ({label, bwidth, bcolour}) => {
+const Content = styled.div`
+`;
+
+const Icon = styled.img`
+`;
+
+const Button = ({label, bwidth, bcolour, iconsrc }) => {
 
     return <Container bgcolour={bcolour} width={bwidth}>
-    {label}
-    </Container>
+
+    <Content>
+        <div></div>
+        <div>{label}</div>
+    </Content>
+
+</Container>
 }
 
 Button.defaultProps = {
 label: "custom button",
 bwidth: null,
-bcolour: null
+bcolour: null,
+
 }
 
 export default Button

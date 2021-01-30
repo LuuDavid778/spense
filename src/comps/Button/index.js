@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 const Container = styled.button`
 width:100%;
-height: 50px;
+height: ${props => props.height ? props.height : "50px"};
 max-width: ${props => props.width ? props.width : "158px"};
 border-radius: 5px;
-background-color: ${props => props.bgcolour ? props.bgcolour : "#698FF2"};
+background-color: ${props => props.bcolour ? props.bcolour : "#698FF2"};
 display:flex;
 align-items:center; 
 border:none;
@@ -34,11 +34,11 @@ font-size:20px;
 
 const Icon = styled.img`
  margin-left:20px;
- margin-right:15px;
+ margin-right:20px;
 `;
-const Button = ({label, bwidth, bcolour, iconsrc}) => {
+const Button = ({label, bwidth, bgcolour, iconsrc, bheight}) => {
 
-    return <Container bgcolour={bcolour} width={bwidth}>
+    return <Container height={bheight} bcolour={bgcolour} width={bwidth}>
     <Content>
         <Icon src={iconsrc}></Icon>
         <Label>{label}</Label>
@@ -48,8 +48,9 @@ const Button = ({label, bwidth, bcolour, iconsrc}) => {
 
 Button.defaultProps = {
 label: "Add",
+bheight: null,
 bwidth: null,
-bcolour: null,
+bgcolour: null,
 iconsrc: "./addicon.png"
 }
 

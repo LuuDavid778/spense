@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Buttom from 'comps/Button'
+import Button from 'comps/Button'
+import Delete from 'comps/Delete'
 
 const Main = () => {
   return <div className="main">
-<Button></Button>
+<Delete></Delete>
 </div>
 }
 

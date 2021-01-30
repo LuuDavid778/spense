@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 const Container = styled.div`
-min-width:300px;
+min-width:356px;
 max-width:356px;
 min-height:59px;
 max-height:80px;
@@ -66,7 +66,7 @@ max-width:60px;
 min-height:59px;
 max-height:80px;
 background-color:#698FF2;
-display:none;
+display:${props=>props.display ? props.display : "none"};
 `
 const Deletecont = styled.div`
 min-width:50px;
@@ -74,12 +74,17 @@ max-width:60px;
 min-height:59px;
 max-height:80px;
 background-color:#F26969;
-display:none;
+display:${props=>props.display ? props.display : "none"};
 `
 
 
 
-const Transaction = ({category, item, cost, status, size, color}) =>{
+const TransactionListItem = ({category, item, cost, status, size, color, display}) =>{
+    const [triggeredItemAction, triggerItemAction] = useState('None');
+    const [swipeProgress, handleSwipeProgress] = useState();
+    const [swipeAction, handleSwipeAction] = useState('None');
+
+
     return <Container>
         <Content>
 
@@ -104,20 +109,21 @@ const Transaction = ({category, item, cost, status, size, color}) =>{
 
         </Content>
 
-        <Editcont></Editcont>
-        <Deletecont></Deletecont>
+        <Editcont display="none"></Editcont>
+        <Deletecont display="none" ></Deletecont>
 
         </Container>
 
 }
 
-Transaction.defaultProps = {
+TransactionListItem.defaultProps = {
     category:"Category",
     item:"Item",
     cost:"$0.00",
     status:"Status",
     size:"10px",
     color:"#F26969",
+    display:"none"
 }
 
-export default Transaction;
+export default TransactionListItem;

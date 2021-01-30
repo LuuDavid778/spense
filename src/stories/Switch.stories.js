@@ -1,9 +1,9 @@
 import React from 'react';
-import Switch from '../comps/Switch';
+import Toggle from '../comps/Switch';
 
 export default {
-    title:"Comps/Switch",
-    component: Switch
+    title:"Comps/Toggle",
+    component: Toggle
 };
 
-export const MySwitch = () => <Switch />
+export const MyToggle = () => <Toggle />

@@ -1,0 +1,42 @@
+.complex-swipeable-list__item-content-left {
+  background-color: #F26969;
+  color: white;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.complex-swipeable-list__item-content-right {
+  background-color: #698FF2;
+  color: white;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 5px;
+}
+
+.complex-swipeable-list__content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-weight: 300;
+  font-size: 14px;
+  width: 64px;
+  max-width: 64px;
+  text-align: center;
+  padding: 4px;
+  padding-top: 8px;
+}
+
+.complex-swipeable-list__icon {
+  fill: white;
+  width: 32px;
+  height: 32px;
+  margin-top: -4px;
+}

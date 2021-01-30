@@ -1,4 +1,41 @@
-import React, {useState, useEffect} from 'react';
+import React, { Component, useState } from "react";
+import Switch from "react-switch";
+
+const Toggle = () => {
+    const [checked, setChecked] = useState(false);
+    const handleChange = nextChecked => {
+      setChecked(nextChecked);
+    };
+  
+    return (
+          <Switch
+            onChange={handleChange}
+            checked={checked}
+            className="react-switch"
+            offColor="#DAD"
+            onColor="#F2AB69"
+          />
+    );
+  };
+
+  export default Toggle;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -33,4 +70,4 @@ const Switch = ({}) => {
 }
 
 
-export default Switch;
+export default Switch; */

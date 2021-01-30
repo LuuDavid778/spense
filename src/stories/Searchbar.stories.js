@@ -2,7 +2,7 @@ import React from 'react';
 import Searchbar from 'comps/Searchbar'
 
 export default {
-  title: 'Searchbar',
+  title: 'Comps/Searchbar',
   component: Searchbar
 };
 

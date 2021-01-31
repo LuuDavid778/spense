@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 
 const TotalCont = styled.div`
-min-hight: 190px;
+min-height: 190px;
 min-width: 350px;
 padding: 10px;
 display:flex;

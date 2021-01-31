@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 
 const ImageCont = styled.img`
-min-hight: 190px;
+min-height: 190px;
 min-width: 350px;
 display:flex;
 flex-direction: column;

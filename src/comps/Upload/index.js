@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 
 const UploadCont = styled.div`
-max-hight: 125px;
+max-height: 125px;
 max-width: 210px;
 background-color:#698FF2;
 display:flex;

@@ -1,29 +1,58 @@
 import React from 'react'
 import styled from 'styled-components'
+// import Addicon from './addicon.png'
 
-const Container = styled.div`
-min-height: 50px;
+const Container = styled.button`
+width:100%;
+height: ${props => props.height ? props.height : "50px"};
 max-width: ${props => props.width ? props.width : "158px"};
-min-width: 10px;
 border-radius: 5px;
-background-color: ${props => props.bgcolour ? props.bgcolour : "#698FF2"};
+background-color: ${props => props.bcolour ? props.bcolour : "#698FF2"};
+display:flex;
+align-items:center; 
+border:none;
+outline:none;
+`;
+
+const Content = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%
+height:100%;
+`;
+
+const Label = styled.div`
 display:flex;
 align-items:center;
 justify-content:center;
+font-family: 'Roboto', sans-serif;
+font-weight:500;
+color:white;
+font-size:20px;
 `;
 
-const Button = ({label, bwidth, bcolour}) => {
+const Icon = styled.img`
+ margin-left:20px;
+ margin-right:20px;
+`;
+const Button = ({label, bwidth, bgcolour, iconsrc, bheight}) => {
 
-    return <Container bgcolour={bcolour} width={bwidth}>
-    {label}
-    </Container>
+    return <Container height={bheight} bcolour={bgcolour} width={bwidth}>
+    <Content>
+        <Icon src={iconsrc}></Icon>
+        <Label>{label}</Label>
+    </Content>
+</Container>
 }
 
 Button.defaultProps = {
-label: "custom button",
+label: "Add",
+bheight: null,
 bwidth: null,
-bcolour: null
+bgcolour: null,
+iconsrc: "./addicon.png"
 }
 
-export default Button
+export default Button;
 

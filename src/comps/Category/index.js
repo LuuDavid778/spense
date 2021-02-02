@@ -12,6 +12,7 @@ justify-content:center;
 align-items:center;
 flex-direction:column;
 color: #676767;
+box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const Row1 = styled.div`

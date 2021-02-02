@@ -5,7 +5,7 @@ import Delete from 'comps/Delete'
 
 const Main = () => {
   return <div className="main">
-<Delete></Delete>
+
 </div>
 }
 

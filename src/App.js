@@ -1,11 +1,11 @@
 
-import Main from './pages/main';
+import AddTransactionPage from 'pages/main/AddTransactionPage';
 
 
 function App() {
   return (
     <div className="App">
-    <Main />
+    <AddTransactionPage />
   </div>
   );
 }

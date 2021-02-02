@@ -13,6 +13,7 @@ align-items:center;
 flex-direction:column;
 color: #676767;
 box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+display:${props=>props.display ? props.display : "none"}
 `;
 
 const Row1 = styled.div`
@@ -106,9 +107,9 @@ right:65px;
 const Label = styled.div`
 color:#C4C4C4;
     `;
-const Category = () => {
+const Category = ({display}) => {
 
-return <Container>
+return <Container display="flex" >
     <Row1>
     <Foods>
         <img src="./foodsicon.png"></img>
@@ -148,6 +149,7 @@ return <Container>
 }
 
 Category.defaultProps = {
+    display:"none"
 }
 
 export default Category;

@@ -1,0 +1,63 @@
+.AddCont{
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index:-1;
+}
+    h1{
+       color: #676767;
+    }
+    p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+    .TransactionCont{
+        padding-bottom: 5px;
+        padding-top: 10px;
+    }
+    .TransactionCont3{
+        padding-bottom: 20px;
+        padding-top: 10px;
+    }
+    .DropDownCont{
+        width: 354px;
+    }
+    .StatusCont{
+        display:flex;
+        justify-content: flex-start;
+        padding-left: 12px;
+    }
+    .SwitchNameCont{
+        color: #C4C4C4;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right:75px;
+    }
+    .SwitchButtonCont{
+        padding-right:35px;
+    }
+    .SwitchCont{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .PaidCont{
+        color: #C4C4C4;
+    }
+    .UnpaidCont{
+        color: #F2AB69;
+    }
+    .ButtonsCont{
+        display: flex;
+        width:100%;
+        justify-content: space-evenly;
+        padding-top:50px;
+    }

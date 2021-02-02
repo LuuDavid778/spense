@@ -1,11 +1,15 @@
 
+import Main from './pages/main';
+import OpenTrans from './pages/opentrans'
 import HomePage from './pages/HomePage';
 
 
 function App() {
   return (
     <div className="App">
-    <HomePage />
+    {/* <Main /> */}
+    <OpenTrans></OpenTrans>
+    {/* <HomePage /> */}
   </div>
   );
 }

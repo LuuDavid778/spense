@@ -12,6 +12,7 @@ display:flex;
 align-items:center; 
 border:none;
 outline:none;
+cursor:pointer;
 `;
 
 const Content = styled.div`
@@ -33,8 +34,10 @@ font-size:20px;
 `;
 
 const Icon = styled.img`
- margin-left:20px;
- margin-right:20px;
+ margin-left:10px;
+ margin-right:10px;
+ width:30px;
+ height:30px;
 `;
 const Button = ({label, bwidth, bgcolour, iconsrc, bheight}) => {
 
@@ -55,4 +58,3 @@ iconsrc: "./addicon.png"
 }
 
 export default Button;
-

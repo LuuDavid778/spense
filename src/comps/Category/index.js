@@ -109,7 +109,7 @@ color:#C4C4C4;
     `;
 const Category = ({display}) => {
 
-return <Container display="flex" >
+return <Container display="in-line" >
     <Row1>
     <Foods>
         <img src="./foodsicon.png"></img>

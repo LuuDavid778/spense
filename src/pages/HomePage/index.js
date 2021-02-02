@@ -26,7 +26,6 @@ export default function HomePage(){
                 </div>
                 <div className="dropDown">
                     <DropDown/>
-                    <Category/>
                 </div>
                 <div className="selection">
                     <Selection/>

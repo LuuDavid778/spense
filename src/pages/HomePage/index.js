@@ -6,6 +6,7 @@ import Selection from '../../comps/Selection';
 import Date from '../../comps/Date';
 import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
+import Category from '../../comps/Category';
 import './HomePage.scss';
 
 
@@ -35,6 +36,16 @@ export default function HomePage(){
                     <Date/>
                 </div>
                 <div className="homeTransaction">
+                    <Transaction/>
+                    <Transaction/>
+                    <Transaction/>
+                    <Transaction/>
+                </div>
+                <div className="homeDate">
+                    <Date/>
+                </div>
+                <div className="homeTransaction">
+                    <Transaction/>
                     <Transaction/>
                 </div>
             </div>

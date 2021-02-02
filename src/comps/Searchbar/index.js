@@ -13,7 +13,6 @@ width: 316px;
 border-radius: 5px;
 border: 1px solid #DDD9D9;
 outline: none;
-font-family: Roboto;
 font-style: normal;
 font-weight: normal;
 font-size: 20px;

@@ -1,0 +1,73 @@
+.homeCont{
+    background: #F6F9FF;
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index:-1;
+    .homeHeader{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 270px;
+        display: flex;
+        font-size: 24px;
+        color: #FFFFFF;
+        background-color: #698FF2;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        p{
+            position: absolute;
+            top: 33px;
+            left: 27px;
+        }
+        img{
+            position: absolute;
+            top: 43px;
+            left: 200px;
+        }
+    }
+    .searchBar{
+        position: absolute;
+        top: 103px;
+        left: 27px;
+    }
+    .totalCont{
+        position: absolute;
+        top: 148px;
+        left: 27px;
+        display: inline-flex;
+        flex-direction: column;
+        .dropDown{
+            position: absolute;
+            top: 88px;
+            left: 20px;
+        }
+        .selection{
+            position: absolute;
+            top: 155px;
+            left: 20px;
+        }
+    }
+    .historyCont{
+        position: absolute;
+        top: 365px;
+        left: 25px;
+        max-width:320px;
+        display: inline-flex;
+        flex-direction: column;
+        .homeDate{
+            margin-bottom: 4px;
+        }
+    }
+    .addItem{
+        position: absolute;
+        left: 278px;
+        top: 720px;
+    }
+}

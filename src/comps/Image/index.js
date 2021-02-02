@@ -3,12 +3,13 @@ import styled, {css} from 'styled-components';
 
 const ImageCont = styled.img`
 min-height: 190px;
-min-width: 350px;
+max-width: 320px;
 display:flex;
 flex-direction: column;
 align-items: center;
 justify-content: start;
 border-radius: 10px;
+background-color:black;
 `;
 
 const Image = ({img}) => {

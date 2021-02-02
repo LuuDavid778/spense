@@ -1,31 +1,25 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 
+const Container = styled.div`
+    background-color:#FFFFFF;
+    border-radius: 5px;
+`;
 
-const Input = styled.input`
+const Search = styled.input`
 width:100%;
-height: 45px;
-max-width: 356px;
+height: 35px;
+width: 316px;
 border-radius: 5px;
-background: #FFFFFF;
 border: 1px solid #DDD9D9;
 outline: none;
-padding-left:50px;
-font-family: Roboto;
 font-style: normal;
 font-weight: normal;
 font-size: 20px;
-background: url("./searchicon.png") 10px no-repeat;
+background: url("./searchIcon.png") 10px no-repeat;
 `;
 
-const Container = styled.div`
 
-`;
-
-const Icon = styled.img`
-position:relative;
-
-`;
 
 
 const Searchbar = ({placeholder, value}) => {
@@ -35,14 +29,14 @@ const Searchbar = ({placeholder, value}) => {
 
 
     return <Container>
-        <Input placeholder={placeholder} onChange={(e)=>{
+        <Search placeholder={placeholder} onChange={(e)=>{
          setInputValue(e.target.value);
-        }}></Input>
+        }}></Search>
 </Container>
 }
 
 Searchbar.defaultProps = {
-placeholder: "Default Placeholder"
+placeholder: "         Search Transactions"
 
 
 }

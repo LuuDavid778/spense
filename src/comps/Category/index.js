@@ -11,7 +11,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-color:white;
+color: #676767;
 `;
 
 const Row1 = styled.div`

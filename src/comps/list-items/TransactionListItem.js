@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 
 const Container = styled.div`
-min-width:356px;
-max-width:356px;
+min-width:330px;
+max-width:330px;
 min-height:59px;
 max-height:80px;
 border-radius: 5px;
@@ -12,12 +12,12 @@ background-color: #FFFFFF;
 display:flex;
 align-items:center;
 justify-content:center;
-border:1px solid black;
+border:1px solid #DDD9D9;
 `
 
 const Content = styled.div`
-min-width:330px;
-max-width:400px;
+min-width:280px;
+max-width:330px;
 min-height:42px;
 max-height:80px;
 background-color: #FFFFFF;
@@ -60,22 +60,7 @@ color:${props=>props.color ? props.color : "#F26969"};
 font-size:${props=>props.size ? props.size : "10px"};
 `
 
-const Editcont = styled.div`
-min-width:50px;
-max-width:60px;
-min-height:59px;
-max-height:80px;
-background-color:#698FF2;
-display:${props=>props.display ? props.display : "none"};
-`
-const Deletecont = styled.div`
-min-width:50px;
-max-width:60px;
-min-height:59px;
-max-height:80px;
-background-color:#F26969;
-display:${props=>props.display ? props.display : "none"};
-`
+
 
 
 
@@ -108,10 +93,6 @@ const TransactionListItem = ({category, item, cost, status, size, color, display
             </Right>
 
         </Content>
-
-        <Editcont display="none"></Editcont>
-        <Deletecont display="none" ></Deletecont>
-
         </Container>
 
 }

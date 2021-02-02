@@ -1,5 +1,4 @@
 
-import Main from './pages/main';
 import HomePage from './pages/HomePage';
 
 

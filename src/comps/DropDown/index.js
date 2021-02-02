@@ -5,7 +5,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 const Container = styled.div`
 min-height: 38px;
 max-width: ${props => props.width ? props.width : "293px"};
-min-width: 10px;
+min-width: 253px;
 border-radius: 5px;
 background-color: ${props => props.bgcolour ? props.bgcolour : "#698FF2"};
 display:flex;

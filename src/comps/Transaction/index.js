@@ -11,13 +11,16 @@ import { MailIcon, EditIcon, DeleteIcon } from '../list-items/icons';
 
 import './Transaction.css';
 
-const Transaction = () => {
+const Transaction = ({handleDelete, handleEdit, category, item, cost, status}) => {
   const [triggeredItemAction, triggerItemAction] = useState('None');
   const [swipeProgress, handleSwipeProgress] = useState();
   const [swipeAction, handleSwipeAction] = useState('None');
+
+
   const [items] = useState([
     { id: 1, text: 'First', description: 'first description' },
   ]);
+
 
   const swipeRightOptions = name => ({
     content: (
@@ -27,7 +30,7 @@ const Transaction = () => {
         position="left"
       />
     ),
-    action: () => triggerItemAction(`Delete action triggered on "${name}" item`)
+    action: () => triggerItemAction(handleDelete)
   });
 
   const swipeLeftOptions = name => ({
@@ -38,7 +41,7 @@ const Transaction = () => {
         position="right"
       />
     ),
-    action: () => triggerItemAction(`Edit action triggered on "${name}" item `)
+    action: () => triggerItemAction(handleEdit)
   });
 
   const handleSwipeStart = () => {
@@ -68,8 +71,10 @@ const Transaction = () => {
               onSwipeStart={handleSwipeStart}
             >
               <TransactionListItem
-                description={description}
-                name={text}
+                category={category}
+                item={item}
+                cost={cost}
+                status={status}
               />
             </SwipeableListItem>
           ))}
@@ -88,5 +93,16 @@ const Transaction = () => {
     </>
   );
 };
+
+
+Transaction.defaultProps= {
+  handleDelete: ()=>{},
+  handleEdit: ()=>{},
+  category:"Entertainment",
+  item:"Roblox Giftcard",
+  cost:300,
+  status:"Paid"
+
+}
 
 export default Transaction;

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Upload from 'comps/Upload';
 import Input from 'comps/Input';
 import DropDown from 'comps/DropDown';
 import Button from 'comps/Button';
 import Switch from 'comps/Switch';
 import './Addtransaction.scss';
+import {useHistory,} from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 export default function AddTransactionPage() {
+    const history = useHistory();
+
+    const [TransName, setTransName] = useState("")
+    const [TransAmount, setTransAmount] = useState("")
+    const [TransDesc, setTransDesc] = useState("")
+
     return( <div className="AddPageCont">
         <div className="AddCont">
         <h1>Add New Transaction</h1>
@@ -15,10 +24,14 @@ export default function AddTransactionPage() {
         <p>Add an image of your transaction to easily keep track of it</p>
         </div>
         <div className="TransactionCont">
-        <Input/>
+        <Input onChange={(e)=>{
+            setTransName(e.target.value)
+        }}/>
         </div>
         <div className="TransactionCont">
-        <Input text="Transaction Amount ($)" placeholder="Transaction Amount"></Input>
+        <Input text="Transaction Amount ($)" placeholder="Transaction Amount" onChange={(e)=>{
+            setTransAmount(e.target.value)
+        }} ></Input>
         </div>
         <div className="TransactionCont3">
         <Input text="Transaction Description" placeholder="Transaction Description"></Input>
@@ -31,18 +44,10 @@ export default function AddTransactionPage() {
         <p>Transaction Status</p>
         </div>
         <div className="SwitchCont">
-        <div className="SwitchButtonCont">
             <Switch/>
-            </div>
-        <div className="SwitchNameCont">
-        <h9>Paid | </h9> 
-        <div className="UnpaidCont">
-        <h9>Unpaid</h9>
-        </div>   
-        </div>
         </div>
         <div className="ButtonsCont">
-        <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="140px"></Button>
+        <Link to ="/"><Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="140px"></Button></Link>
         <Button iconsrc="./addicon.png" label="Add" bwidth="140px"></Button>
         </div>
     </div>

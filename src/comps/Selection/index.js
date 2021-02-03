@@ -1,69 +1,52 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, {useState} from 'react';
+import styled from 'styled-components';
+import TimeSelect from '../TimeSelect';
 
 const Container = styled.div`
 min-height: 44px;
-max-width: ${props => props.width ? props.width : "317px"};
+max-width:"317px";
 min-width: 253px;
 border-radius: 5px;
 display:flex;
 align-items:center;
 `;
 
-const Container1 = styled.div`
-min-height: 43px;
-max-width: ${props => props.width ? props.width : "118px"};
-min-width: 72px;
-background-color: ${props => props.bgcolour ? props.bgcolour : "#fff"};
-border: ${props => props.stroke ? props.stroke : "1px solid #EAE7E7"};
-color: ${props => props.color ? props.color : "#676767"};
-display:flex;
-align-items:center;
-padding-left:10px;
-padding-right:10px;
-border-radius: 5px 0px 0px 5px;
-`;
 
-const Container2 = styled.div`
-min-height: 43px;
-max-width: ${props => props.width ? props.width : "118px"};
-min-width: 72px;
-background-color: ${props => props.bgcolour ? props.bgcolour : "#fff"};
-border: ${props => props.stroke ? props.stroke : "1px solid #EAE7E7"};
-color: ${props => props.color ? props.color : "#676767"};
-display:flex;
-align-items:center;
-padding-left:10px;
-padding-right:10px;
-`;
-const Container3 = styled.div`
-min-height: 43px;
-max-width: ${props => props.width ? props.width : "118px"};
-min-width: 72px;
-background-color: ${props => props.bgcolour ? props.bgcolour : "#fff"};
-border: ${props => props.stroke ? props.stroke : "1px solid #EAE7E7"};
-color: ${props => props.color ? props.color : "#676767"};
-display:flex;
-align-items:center;
-padding-left:10px;
-padding-right:10px;
-border-radius: 0px 5px 5px 0px;
-`;
+const Selection = () => {
 
-const Selection = ({label, bwidth, bcolour, stroke, color}) => {
+    const [clickedSelect, setClickedSelect] = useState(null);
 
-    return <Container bgcolour={bcolour} width={bwidth}>
-    <Container1 bgcolour={bcolour} width={bwidth} stroke={stroke} color={color}>
-    Daily
-    </Container1>
-    <Container2 bgcolour={bcolour} width={bwidth} stroke={stroke} color={color}>
-    Weekly
-    </Container2>
-    <Container3 bgcolour={bcolour} width={bwidth} stroke={stroke} color={color}>
-    Monthly
-    </Container3>
+    const HandleSelect = (name) =>{
+        setClickedSelect(name);
+    };
+    return <Container>
+    <TimeSelect
+        onSelect={HandleSelect}
+        name="Daily"
+        bgcolor={clickedSelect === "Daily" ? "#DAE4FF": null}
+        stroke={clickedSelect === "Daily" ? "1px solid #698FF2" : null}
+        color={clickedSelect === "Daily" ? "#698FF2" : null}
+        radius="5px 0px 0px 5px"
+    />
+    <TimeSelect
+        onSelect={HandleSelect}
+        name="Weekly"
+        bgcolor={clickedSelect === "Weekly" ? "#DAE4FF": null}
+        stroke={clickedSelect === "Weekly" ? "1px solid #698FF2" : null}
+        color={clickedSelect === "Weekly" ? "#698FF2" : null}
+    />
+    <TimeSelect
+        onSelect={HandleSelect}
+        name="Monthly"
+        bgcolor={clickedSelect === "Monthly" ? "#DAE4FF": null}
+        stroke={clickedSelect === "Monthly" ? "1px solid #698FF2" : null}
+        color={clickedSelect === "Monthly" ? "#698FF2" : null}
+        radius="0px 5px 5px 0px"
+    />
     </Container>
 }
 
+Selection.defaultProps = {
+}
 export default Selection
 

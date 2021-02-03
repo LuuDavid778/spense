@@ -7,6 +7,7 @@ import Date from '../../comps/Date';
 import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
+import CombinedDrop from 'comps/CombinedDrop';
 import './HomePage.scss';
 import { Link } from "react-router-dom";
 
@@ -53,7 +54,7 @@ export default function HomePage(){
                     <TotalAmount/>
                 </div>
                 <div className="dropDown">
-                    <DropDown/>
+                    <CombinedDrop label="Foods & Drinks" />
                 </div>
                 <div className="selection">
                     <Selection/>

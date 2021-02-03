@@ -7,7 +7,7 @@ import Switch from 'comps/Switch';
 import './Addtransaction.scss';
 import {useHistory,} from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import CombinedDrop from 'comps/CombinedDrop';
 
 export default function AddTransactionPage() {
     const history = useHistory();
@@ -37,7 +37,7 @@ export default function AddTransactionPage() {
         <Input text="Transaction Description" placeholder="Transaction Description"></Input>
         </div>
         <div className="DropDownCont">
-        <DropDown label="Transaction Category"></DropDown>
+        <CombinedDrop label="Transaction Category"></CombinedDrop>
         </div>
         </div>
         <div className="StatusCont">

@@ -5,6 +5,7 @@ import DropDown from 'comps/DropDown';
 import Button from 'comps/Button';
 import Switch from 'comps/Switch';
 import './edittransaction.scss';
+import CombinedDrop from 'comps/CombinedDrop';
 
 export default function EditTransactionPage() {
     return( <div className="AddPageCont">
@@ -24,7 +25,7 @@ export default function EditTransactionPage() {
         <Input text="Transaction Description" placeholder="Transaction Description"></Input>
         </div>
         <div className="DropDownCont">
-        <DropDown label="Transaction Category"></DropDown>
+        <CombinedDrop label="Transaction Category"></CombinedDrop>
         </div>
         </div>
         <div className="StatusCont">

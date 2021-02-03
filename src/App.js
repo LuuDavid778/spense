@@ -17,7 +17,6 @@ function App() {
       <Route exact path="/edittransaction" component={EditTransactionPage}></Route>
       <Route exact path="/opentransaction" component={OpenTrans}></Route>
   </div>
-  
   </Router>
   );
 }

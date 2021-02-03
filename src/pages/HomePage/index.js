@@ -9,7 +9,35 @@ import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
 import CombinedDrop from 'comps/CombinedDrop';
 import './HomePage.scss';
+import { Link } from "react-router-dom";
 
+
+const fakedb =[
+    {
+        tname: "Roblox Giftcard",
+        category: "Entertainment",
+        cost: 100,
+        status: "paid"
+    },
+    {
+        tname: "Gamestop Stock",
+        category: "Personal",
+        cost: 6000,
+        status: "paid"
+    },
+    {
+        tname: "Phone Bill",
+        category: "Bills & Fees",
+        cost: 35,
+        status: "Unpaid"
+    },
+    {
+        tname: "Bitcoin",
+        category: "Personal",
+        cost: 32220,
+        status: "paid"
+    },
+]
 
 export default function HomePage(){
     return(
@@ -37,21 +65,37 @@ export default function HomePage(){
                     <Date/>
                 </div>
                 <div className="homeTransaction">
-                    <Transaction/>
-                    <Transaction/>
-                    <Transaction/>
-                    <Transaction/>
+                    {/* <Link to ="/opentransaction">
+                    <Transaction handleEdit={()=>{
+
+                        console.log("edit")
+                    }}handleDelete={()=>{
+                        console.log("deleted")
+                    
+                    }}/>
+                    </Link> */}
+
+                    {fakedb.map((o)=>{
+                        return <Transaction handleEdit={()=>{
+                            console.log("edit")
+                        }}handleDelete={()=>{
+                            console.log("deleted")
+                        }}
+                        category={o.category} cost={o.cost} status={o.status} item={o.tname}
+                        ></Transaction>
+                    })}
+
                 </div>
-                <div className="homeDate">
+                {/* <div className="homeDate">
                     <Date/>
                 </div>
                 <div className="homeTransaction">
                     <Transaction/>
                     <Transaction/>
-                </div>
+                </div> */}
             </div>
             <div className="addItem">
-                <AddItem/>
+                <Link to ="/addtransaction"><AddItem/></Link>
             </div>
         </div>
     )}

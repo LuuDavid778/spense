@@ -33,21 +33,13 @@
         justify-content: flex-start;
         padding-left: 12px;
     }
-    .SwitchNameCont{
-        color: #C4C4C4;
-        font-size: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-right:75px;
-    }
-    .SwitchButtonCont{
-        padding-right:35px;
-    }
+
+
     .SwitchCont{
         display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;
+        left:-115px;
+       
     }
     .PaidCont{
         color: #C4C4C4;

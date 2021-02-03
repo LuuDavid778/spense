@@ -2,21 +2,30 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
+    width: 316px;
     background-color:#FFFFFF;
     border-radius: 5px;
+    border: 1px solid #DDD9D9;
+    display:flex;
+    align-items:center;
+    justify-content:end;
+    padding-left: 5px;
 `;
 
 const Search = styled.input`
 width:100%;
 height: 35px;
-width: 316px;
+margin-left: 15px;
 border-radius: 5px;
-border: 1px solid #DDD9D9;
+border: none;
 outline: none;
 font-style: normal;
 font-weight: normal;
 font-size: 20px;
-background: url("./searchIcon.png") 10px no-repeat;
+::placeholder{
+    color: #DDD9D9;
+}
+
 `;
 
 
@@ -29,14 +38,15 @@ const Searchbar = ({placeholder, value}) => {
 
 
     return <Container>
+        <img src="./searchIcon.png"/>
         <Search placeholder={placeholder} onChange={(e)=>{
          setInputValue(e.target.value);
         }}></Search>
-</Container>
+    </Container>
 }
 
 Searchbar.defaultProps = {
-placeholder: "         Search Transactions"
+placeholder: "Search Transactions"
 
 
 }

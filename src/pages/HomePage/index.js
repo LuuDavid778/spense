@@ -11,11 +11,15 @@ import './HomePage.scss';
 
 
 export default function HomePage(){
+
     return(
         <div className="homeCont">
             <div className="homeHeader">
+                
+            </div>
+            <div className="logo">
                 <p>Overview</p>
-                <img src="./Logo.png"/>
+                <img src="./Logo.png"/>  
             </div>
             <div className="searchBar">
                 <Searchbar/>

@@ -6,10 +6,10 @@ import EditTransactionPage from 'pages/EditTransactionPage';
 function App() {
   return (
     <div className="App">
-    {/* <AddTransactionPage /> */}
-    {/* <OpenTrans></OpenTrans> */}
-    {/* <HomePage /> */}
-    <EditTransactionPage></EditTransactionPage>  
+     {/* <AddTransactionPage />  */}
+     {/* <OpenTrans></OpenTrans>  */}
+     <HomePage /> 
+     {/* <EditTransactionPage></EditTransactionPage>   */}
   </div>
   );
 }

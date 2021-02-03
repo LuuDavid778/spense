@@ -26,7 +26,7 @@ export default function HomePage(){
                     <TotalAmount/>
                 </div>
                 <div className="dropDown">
-                    <CombinedDrop />
+                    <CombinedDrop label="Foods & Drinks" />
                 </div>
                 <div className="selection">
                     <Selection/>

@@ -14,15 +14,14 @@ font-size: 32px;
 padding: 0;
 `;
 
-const AddItem = ({label}) => {
+const AddItem = () => {
 
     return <Container>
-    {label}
+    <img src="./addtransactionicon.png"/>
     </Container>
 }
 
 AddItem.defaultProps = {
-label: "+"
 }
 
 export default AddItem

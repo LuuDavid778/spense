@@ -12,6 +12,10 @@ function App() {
   return (
     <Router>
     <div className="App">
+    {/* <AddTransactionPage /> */}
+    {/* <OpenTrans></OpenTrans> */}
+     <HomePage />
+    {/* <EditTransactionPage></EditTransactionPage>  */}
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="/addtransaction" component={AddTransactionPage}></Route>
       <Route exact path="/edittransaction" component={EditTransactionPage}></Route>

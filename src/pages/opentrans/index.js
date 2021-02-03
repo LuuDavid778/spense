@@ -5,6 +5,9 @@ import Image from 'comps/Image';
 import './opentrans.scss'
 import '../../../src/App.scss'
 import CategorySubhead from 'comps/CategorySubhead';
+import { Link } from "react-router-dom";
+
+
 
 const Header = styled.h1`
 margin:0px;
@@ -31,7 +34,9 @@ const [img, setImg] = useState()
 
 
   return <div>
-     <div className="bg"></div>
+     <div className="bg">
+     <Link to ="/"><img  className ="exiticon" src = "./exiticon.png"></img></Link>
+       </div>
   <div className="main">
   <div className ="image"><Image img={img}></Image></div>
     <div className = "content">
@@ -49,7 +54,7 @@ const [img, setImg] = useState()
 
     <div className="navigate">
         <Button iconsrc="./deleteicon.png" label="Delete" bgcolour="#F37C75"bwidth="140px"></Button>
-        <Button iconsrc="./editicon.png" label="Edit" bwidth="140px"></Button>
+      <Button iconsrc="./editicon.png" label="Edit" bwidth="140px"></Button>
     </div>
 
   </div>

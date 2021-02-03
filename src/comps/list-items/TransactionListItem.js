@@ -84,7 +84,7 @@ const TransactionListItem = ({category, item, cost, status, size, color, display
 
             <Right> 
                 <Textcontrol size="18px" color="black">
-                {cost}
+                ${cost}
                 </Textcontrol >
 
                 <Textcontrol size="18px" color={color}>
@@ -100,7 +100,7 @@ const TransactionListItem = ({category, item, cost, status, size, color, display
 TransactionListItem.defaultProps = {
     category:"Category",
     item:"Item",
-    cost:"$0.00",
+    cost:"0.00",
     status:"Status",
     size:"10px",
     color:"#F26969",

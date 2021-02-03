@@ -3,9 +3,9 @@ import styled from 'styled-components'
 // import Addicon from './addicon.png'
 
 const Container = styled.div`
-width:100%;
+min-width:276px;
 height: 248px;
-max-width: 356px;
+max-width: 351px;
 border-radius: 2px 2px 10px 10px;
 display:flex;
 justify-content:center;
@@ -13,12 +13,11 @@ align-items:center;
 flex-direction:column;
 color: #676767;
 box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
-display:${props=>props.display ? props.display : "none"}
 `;
 
 const Row1 = styled.div`
 margin-top:15px;
-width:80%;
+width:250px;
 display:flex;
 height:50px;
 justify-content:space-between;
@@ -26,7 +25,7 @@ justify-content:space-between;
 
 const Row2 = styled.div`
 margin-top:20px;
-width:80%;
+width:250px;
 display:flex;
 height:50px;
 justify-content:space-between;
@@ -34,7 +33,7 @@ justify-content:space-between;
 
 const Row3 = styled.div`
 margin-top:20px;
-width:80%;
+width:250px;
 display:flex;
 height:50px;
 justify-content:space-between;
@@ -55,6 +54,8 @@ display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
+position:relative;
+left:12px;
 &> img {
     margin-right:10px;
 }
@@ -76,7 +77,7 @@ align-items:center;
 justify-content:center;
 cursor:pointer;
 position:relative;
-right:55px;
+right:33px;
 &> img {
     margin-right:13px;
 }
@@ -98,7 +99,7 @@ align-items:center;
 justify-content:center;
 position:relative;
 cursor:pointer;
-right:65px;
+right:45px;
 &> img {
     margin-right:10px;
 }
@@ -107,9 +108,9 @@ right:65px;
 const Label = styled.div`
 color:#C4C4C4;
     `;
-const Category = ({display}) => {
+const Category = ({}) => {
 
-return <Container display="in-line" >
+return <Container>
     <Row1>
     <Foods>
         <img src="./foodsicon.png"></img>
@@ -149,7 +150,7 @@ return <Container display="in-line" >
 }
 
 Category.defaultProps = {
-    display:"none"
+
 }
 
 export default Category;

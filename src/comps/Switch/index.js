@@ -1,22 +1,50 @@
 import React, { Component, useState } from "react";
 import Switch from "react-switch";
+import styled from 'styled-components'
+
+const Status = styled.div`
+margin-left:10px;
+font-weight:bold;
+color: ${props=> props.color ? props.color :  "#F2AB69"}
+`;
+const Container = styled.div`
+display:flex;
+`;
 
 const Toggle = () => {
     const [checked, setChecked] = useState(false);
+    const [status, setStatus] = useState("Unpaid");
+    const [statuscolor, setStatusColor]= useState(null)
     const handleChange = nextChecked => {
+     
       setChecked(nextChecked);
+      if (status == "Unpaid"){
+        setStatus("Paid")
+        setStatusColor("#698FF2")
+        
+      } else if (status == "Paid"){
+        setStatus("Unpaid")
+        setStatusColor("#F2AB69")
+      }
     };
-  
+    console.log(status)
     return (
+      <Container>
           <Switch
             onChange={handleChange}
             checked={checked}
             className="react-switch"
-            offColor="#DAD"
-            onColor="#F2AB69"
+            offColor="#F2AB69"
+            onColor="#698FF2"
           />
+<Status color={statuscolor}>{status}</Status>
+</Container>
     );
   };
+
+Toggle.defaultProps = {
+
+}
 
   export default Toggle;
 

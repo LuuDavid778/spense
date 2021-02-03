@@ -8,8 +8,8 @@ function App() {
     <div className="App">
     {/* <AddTransactionPage /> */}
     {/* <OpenTrans></OpenTrans> */}
-    <HomePage />
-    {/* <EditTransactionPage></EditTransactionPage>  */}
+    {/* <HomePage /> */}
+    <EditTransactionPage></EditTransactionPage>  
   </div>
   );
 }

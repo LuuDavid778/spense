@@ -8,7 +8,7 @@ function App() {
     <div className="App">
     {/* <AddTransactionPage /> */}
     {/* <OpenTrans></OpenTrans> */}
-    <HomePage />
+     <HomePage />
     {/* <EditTransactionPage></EditTransactionPage>  */}
   </div>
   );

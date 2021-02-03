@@ -1,6 +1,7 @@
 import React from 'react';
 import Upload from 'comps/Upload';
 import Input from 'comps/Input';
+import InputLarge from 'comps/InputLarge';
 import DropDown from 'comps/DropDown';
 import Button from 'comps/Button';
 import Switch from 'comps/Switch';
@@ -21,7 +22,7 @@ export default function AddTransactionPage() {
         <Input text="Transaction Amount ($)" placeholder="Transaction Amount"></Input>
         </div>
         <div className="TransactionCont3">
-        <Input text="Transaction Description" placeholder="Transaction Description"></Input>
+        <InputLarge text="Transaction Description" placeholder="Transaction Description"></InputLarge>
         </div>
         <div className="DropDownCont">
         <DropDown label="Transaction Category"></DropDown>

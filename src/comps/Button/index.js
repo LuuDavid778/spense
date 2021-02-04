@@ -5,6 +5,7 @@ import styled from 'styled-components'
 const Container = styled.button`
 width:100%;
 height: ${props => props.height ? props.height : "50px"};
+min-width: ${props => props.mwidth ? props.mwidth : null};
 max-width: ${props => props.width ? props.width : "158px"};
 border-radius: 5px;
 background-color: ${props => props.bcolour ? props.bcolour : "#698FF2"};
@@ -39,9 +40,9 @@ const Icon = styled.img`
  width:30px;
  height:30px;
 `;
-const Button = ({label, bwidth, bgcolour, iconsrc, bheight}) => {
+const Button = ({label, bwidth, bgcolour, iconsrc, bheight, mwidth}) => {
 
-    return <Container height={bheight} bcolour={bgcolour} width={bwidth}>
+    return <Container height={bheight} bcolour={bgcolour} width={bwidth} mwidth={mwidth}>
     <Content>
         <Icon src={iconsrc}></Icon>
         <Label>{label}</Label>
@@ -54,7 +55,8 @@ label: "Add",
 bheight: null,
 bwidth: null,
 bgcolour: null,
-iconsrc: "./addicon.png"
+iconsrc: "./addicon.png",
+mwidth:null
 }
 
 export default Button;

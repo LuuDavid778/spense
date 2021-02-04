@@ -8,8 +8,26 @@ font-weight:bold;
 color: ${props=> props.color ? props.color :  "#F2AB69"}
 `;
 const Container = styled.div`
+width:100%;
+max-width:150px;
+height:30px;
 display:flex;
+align-items:center;
+margin-left:40px;
 `;
+
+const Switchcont = styled.div`
+width:100%;
+max-width:75px;
+height:100%;
+max-height50px;
+`
+const Statuscont = styled.div`
+min-width:75px;
+max-width:200px;
+height:100%;
+max-height50px;
+`
 
 const Toggle = () => {
     const [checked, setChecked] = useState(false);
@@ -30,6 +48,7 @@ const Toggle = () => {
     console.log(status)
     return (
       <Container>
+        <Switchcont>
           <Switch
             onChange={handleChange}
             checked={checked}
@@ -37,7 +56,10 @@ const Toggle = () => {
             offColor="#F2AB69"
             onColor="#698FF2"
           />
+          </Switchcont>
+          <Statuscont>
 <Status color={statuscolor}>{status}</Status>
+</Statuscont>
 </Container>
     );
   };

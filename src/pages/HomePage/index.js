@@ -7,7 +7,6 @@ import Date from '../../comps/Date';
 import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
-import CombinedDrop from 'comps/CombinedDrop';
 import './HomePage.scss';
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -81,13 +80,15 @@ export default function HomePage(){
                     </Link> */}
 
                     {fakedb.map((o)=>{
-                        return <Transaction handleEdit={()=>{
+                        return <Link to ="/opentransaction">
+                        <Transaction handleEdit={()=>{
                             console.log("edit")
                         }}handleDelete={()=>{
                             console.log("deleted")
                         }}
                         category={o.category} cost={o.cost} status={o.status} item={o.tname}
                         ></Transaction>
+                         </Link>
                     })}
                 </div>
                 {/* <div className="homeDate">

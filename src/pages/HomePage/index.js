@@ -88,11 +88,8 @@ export default function HomePage(){
                         }}
                         category={o.category} cost={o.cost} status={o.status} item={o.tname}
                         ></Transaction>
-                         </Link>
+                         </Link>    
                     })}
-                   
-                    
-
                 </div>
                 {/* <div className="homeDate">
                     <Date/>

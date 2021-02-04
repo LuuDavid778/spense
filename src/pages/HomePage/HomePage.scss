@@ -45,9 +45,23 @@
         align-items: center;
         justify-content:center;
         .dropDown{
+            width:270px;
             margin-top: -85px;
             margin-bottom: 25px;
-            z-index:1;
+            z-index:2;
+            .css-2b097c-container{
+                width: 270px;
+                .css-yk16xz-control{
+                    background-color: #698FF2;
+                    color: #FFFFFF;
+                }
+                .css-1uccc91-singleValue{
+                    color: #FFFFFF;
+                }
+                .css-1wa3eu0-placeholder{
+                    color: #FFFFFF;
+                }
+            }
         }
         .selection{
             z-index:1;

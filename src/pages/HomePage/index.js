@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState} from 'react';
 import Searchbar from '../../comps/Searchbar';
 import TotalAmount from '../../comps/TotalAmount';
 import DropDown from '../../comps/DropDown';
@@ -8,9 +8,9 @@ import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
 import CombinedDrop from 'comps/CombinedDrop';
+import Delete from '../../comps/Delete';
 import './HomePage.scss';
-import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 const fakedb =[
@@ -59,7 +59,7 @@ export default function HomePage(){
                     <TotalAmount/>
                 </div>
                 <div className="dropDown">
-                    <DropDown />
+                    <CombinedDrop label="Foods & Drinks" />
                 </div>
                 <div className="selection">
                     <Selection/>

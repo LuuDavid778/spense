@@ -53,8 +53,12 @@ const [img, setImg] = useState()
    </div>
 
     <div className="navigate">
-        <Button iconsrc="./deleteicon.png" label="Delete" bgcolour="#F37C75"bwidth="140px"></Button>
-      <Button iconsrc="./editicon.png" label="Edit" bwidth="140px"></Button>
+    
+        <Button iconsrc="./deleteicon.png" label="Delete" bgcolour="#F37C75"bwidth="140px" mwidth="140x"></Button>
+
+    <Link to ="/edittransaction">
+      <Button iconsrc="./editicon.png" label="Edit" bwidth="140px" mwidth="140px"></Button>
+    </Link>
     </div>
 
   </div>

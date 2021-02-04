@@ -2,11 +2,13 @@ import React from 'react';
 import Upload from 'comps/Upload';
 import Input from 'comps/Input';
 import InputLarge from 'comps/InputLarge';
-import DropDown from 'comps/DropDown';
 import Button from 'comps/Button';
 import Switch from 'comps/Switch';
 import './edittransaction.scss';
-import CombinedDrop from 'comps/CombinedDrop';
+import DropDown from 'comps/DropDown';
+import { Link } from "react-router-dom";
+
+
 
 export default function EditTransactionPage() {
     return( <div className="AddPageCont">
@@ -26,26 +28,22 @@ export default function EditTransactionPage() {
         <InputLarge text="Transaction Description" placeholder="Transaction Description"></InputLarge>
         </div>
         <div className="DropDownCont">
-        <CombinedDrop label="Transaction Category"></CombinedDrop>
+        <DropDown />
         </div>
         </div>
         <div className="StatusCont">
         <p>Transaction Status</p>
         </div>
         <div className="SwitchCont">
-        <div className="SwitchButtonCont">
-            <Switch/>
+            <div className="SwitchButtonCont">
+                <Switch/>
             </div>
-        <div className="SwitchNameCont">
-        <h9>Paid | </h9> 
-        <div className="UnpaidCont">
-        <h9>Unpaid</h9>
-        </div>   
-        </div>
         </div>
         <div className="ButtonsCont">
-        <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="140px"></Button>
-        <Button iconsrc="./addicon.png" label="Saveicon" bwidth="140px"></Button>
+        <Link to ="/">
+        <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
+        </Link>
+        <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px"></Button>
         </div>
     </div>
     )}

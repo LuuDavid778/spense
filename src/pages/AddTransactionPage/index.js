@@ -8,11 +8,15 @@ import Switch from 'comps/Switch';
 import './Addtransaction.scss';
 import {useHistory,} from "react-router-dom";
 import { Link } from "react-router-dom";
-import CombinedDrop from 'comps/CombinedDrop';
+
 
 export default function AddTransactionPage() {
+    
+    
+    const handlePost = async (TransName, TransAmount, TransDesc) => {
+    }
+    
     const history = useHistory();
-
     const [TransName, setTransName] = useState("")
     const [TransAmount, setTransAmount] = useState("")
     const [TransDesc, setTransDesc] = useState("")
@@ -35,10 +39,12 @@ export default function AddTransactionPage() {
         }} ></Input>
         </div>
         <div className="TransactionCont3">
-        <InputLarge text="Transaction Description" placeholder="Transaction Description"></InputLarge>
+        <InputLarge text="Transaction Description" placeholder="Transaction Description" onChange={(e)=>{
+            setTransDesc(e.target.value)
+        }}></InputLarge>
         </div>
         <div className="DropDownCont">
-        <CombinedDrop label="Transaction Category"></CombinedDrop>
+       <DropDown label="Transaction Category"></DropDown>
         </div>
         </div>
         <div className="StatusCont">
@@ -49,7 +55,9 @@ export default function AddTransactionPage() {
         </div>
         <div className="ButtonsCont">
         <Link to ="/"><Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="140px"></Button></Link>
-        <Button iconsrc="./addicon.png" label="Add" bwidth="140px"></Button>
+        <Button onClick={()=>{
+            handlePost(TransName, TransDesc, TransAmount)
+        }}iconsrc="./addicon.png" label="Add" bwidth="140px"></Button>
         </div>
     </div>
     )}

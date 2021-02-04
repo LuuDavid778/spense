@@ -12,6 +12,7 @@ import Delete from '../../comps/Delete';
 import './HomePage.scss';
 import { Link } from "react-router-dom";
 
+const [setShowDelete] = useState(false);
 
 const fakedb =[
     {
@@ -84,7 +85,7 @@ export default function HomePage(){
                         return <Transaction handleEdit={()=>{
                             console.log("edit")
                         }}handleDelete={()=>{
-                            console.log("deleted")
+                            setShowDelete(<Delete/>);
                         }}
                         category={o.category} cost={o.cost} status={o.status} item={o.tname}
                         ></Transaction>

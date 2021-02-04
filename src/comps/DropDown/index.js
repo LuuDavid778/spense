@@ -1,35 +1,50 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IoIosArrowDown } from 'react-icons/io';
+import Select from 'react-select';
+
+const optionCategory = [
+    {value: 'Foods&Drinks' , label: 'Foods&Drinks'},
+    {value: 'Bills&Fees' , label: 'Bills&Fees'},
+    {value: 'Beauty&Health' , label: 'Beauty&Health'},
+    {value: 'Personal' , label: 'Personal'},
+    {value: 'Others' , label: 'Others'},
+    {value: 'All Categories' , label: 'All Categories'}
+]
 
 const Container = styled.div`
-min-height: 38px;
-max-width: ${props => props.width ? props.width : "253px"};
-min-width: 253px;
-border-radius: 5px;
-background-color: ${props => props.bgcolour ? props.bgcolour : "#698FF2"};
+width: 100%;
 display:flex;
-align-items:center;
+align-items: center;
 justify-content: space-between;
-color:#FFFFFF;
-padding-left:15px;
-padding-right:10px;
-cursor: pointer;
 `;
 
 
-const DropDown = ({label, bwidth, bcolour}) => {
+export function DropDown({onClick, onChange}) {
 
-    return <Container bgcolour={bcolour} width={bwidth}>
-    {label}
-    <IoIosArrowDown />
+    function customTheme(theme){
+        return{
+            ...theme,
+            colors:{
+                ...theme.colors,
+                primary25:'#698FF2',
+                primary:'#F2AB69'
+            }
+        }
+    }
+
+    return <Container >
+        <Select
+            options = {optionCategory}
+            theme = {customTheme}
+            placeholder = 'Categories'
+            onChange = {onChange}
+        />
     </Container>
 }
 
 DropDown.defaultProps = {
-label: "Foods&Drinks",
-bwidth: null,
-bcolour: null
+
 }
 
 export default DropDown

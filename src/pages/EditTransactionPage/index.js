@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Upload from 'comps/Upload';
 import Input from 'comps/Input';
 import InputLarge from 'comps/InputLarge';
@@ -9,8 +9,15 @@ import DropDown from 'comps/DropDown';
 import { Link } from "react-router-dom";
 
 
+export default function EditTransactionPage ({onEditComplete}) {
 
-export default function EditTransactionPage() {
+    const [transaction, setTransaction] = useState("");
+
+    const updateTransaction = (transaction) => {
+
+        console.log(transaction)
+    }
+
     return( <div className="AddPageCont">
         <div className="AddCont">
         <h1>Edit Transaction</h1>
@@ -19,7 +26,9 @@ export default function EditTransactionPage() {
         <p>Add an image of your transaction to easily keep track of it</p>
         </div>
         <div className="TransactionCont">
-        <Input/>
+        <Input onChange={(e)=>{
+            setTransaction(e.target.value)
+        }} />
         </div>
         <div className="TransactionCont">
         <Input text="Transaction Amount ($)" placeholder="Transaction Amount"></Input>
@@ -43,7 +52,8 @@ export default function EditTransactionPage() {
         <Link to ="/">
         <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
         </Link>
-        <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px"></Button>
+        <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px" onClick={()=>{
+            onEditComplete(updateTransaction)}} ></Button>
         </div>
     </div>
     )}

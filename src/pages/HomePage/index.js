@@ -13,7 +13,7 @@ import axios from "axios";
 
 
 const fakedb =[
-    {
+    {   
         tname: "Roblox Giftcard",
         category: "Entertainment",
         cost: 100,
@@ -38,6 +38,10 @@ const fakedb =[
         status: "paid"
     },
 ]
+
+fakedb.forEach((o, i) => o.id = i + 1);
+
+console.log(fakedb)
 
 export default function HomePage(){
 

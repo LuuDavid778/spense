@@ -17,6 +17,9 @@ min-height: 82px;
 min-width: 350px;
 margin-top: 4px;
 border-radius: 5px;
+font-family: Roboto;
+font-size: 14px;
+color: #676767;
 ::placeholder{
     font-family: Roboto;
     font-size: 14px;

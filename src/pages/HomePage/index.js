@@ -18,7 +18,7 @@ const fakedb =[
         id: 0,
         tname: "Roblox Giftcard",
         category: "Entertainment",
-        cost: 100,
+        cost: 25,
         status: "Paid",
         description: "A giftcard for your kid's favorite game."
     },
@@ -26,7 +26,7 @@ const fakedb =[
         id: 1,
         tname: "Gamestop Stock",
         category: "Personal",
-        cost: 6000,
+        cost: 10,
         status: "Paid",
         description: "Your stonk to getting rich"
 
@@ -35,7 +35,7 @@ const fakedb =[
         id: 2,
         tname: "Phone Bill",
         category: "Bills & Fees",
-        cost: 35,
+        cost: 5,
         status: "Unpaid",
         description: "gotta call da hoes"
 
@@ -44,7 +44,7 @@ const fakedb =[
         id: 3,
         tname: "Bitcoin",
         category: "Personal",
-        cost: 32220,
+        cost: 10,
         status: "Paid",
         description: "making fat bank"
 

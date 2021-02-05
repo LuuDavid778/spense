@@ -54,10 +54,17 @@ const fakedb =[
 
 
 
-
 export default function HomePage(){
+const [total, setTotal] = useState()
 
+const calculateTotal = () => {
+    setTotal(fakedb.reduce((n, {cost}) => n + cost, 0))
+}
+    useEffect(()=>{
+    calculateTotal()
+    },[])
     
+
     return(
         <div className="homeCont">
             <div className="homeHeader">
@@ -72,7 +79,7 @@ export default function HomePage(){
             </div>
             <div className="totalCont">
                 <div className="totalAmount">
-                    <TotalAmount/>
+                    <TotalAmount amount = {total}/>
                 </div>
                 <div className="dropDown">
                     <DropDown />

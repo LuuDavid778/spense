@@ -14,33 +14,50 @@ import axios from "axios";
 
 const fakedb =[
     {
+        id: 0,
         tname: "Roblox Giftcard",
         category: "Entertainment",
         cost: 100,
-        status: "paid"
+        status: "Paid",
+        description: "A giftcard for your kid's favorite game."
     },
     {
+        id: 1,
         tname: "Gamestop Stock",
         category: "Personal",
         cost: 6000,
-        status: "paid"
+        status: "Paid",
+        description: "Your stonk to getting rich"
+
     },
     {
+        id: 2,
         tname: "Phone Bill",
         category: "Bills & Fees",
         cost: 35,
-        status: "Unpaid"
+        status: "Unpaid",
+        description: "gotta call da hoes"
+
     },
     {
+        id: 3,
         tname: "Bitcoin",
         category: "Personal",
         cost: 32220,
-        status: "paid"
+        status: "Paid",
+        description: "making fat bank"
+
     },
 ]
 
+
+
+
+
+
 export default function HomePage(){
 
+    
     return(
         <div className="homeCont">
             <div className="homeHeader">
@@ -69,18 +86,8 @@ export default function HomePage(){
                     <Date/>
                 </div>
                 <div className="homeTransaction">
-                    {/* <Link to ="/opentransaction">
-                    <Transaction handleEdit={()=>{
-
-                        console.log("edit")
-                    }}handleDelete={()=>{
-                        console.log("deleted")
-                    
-                    }}/>
-                    </Link> */}
-
                     {fakedb.map((o)=>{
-                        return <Link to ="/opentransaction">
+                        return <Link to={{ pathname: '/opentransaction', state: { o } }}>
                         <Transaction handleEdit={()=>{
                             console.log("edit")
                         }}handleDelete={()=>{
@@ -91,13 +98,6 @@ export default function HomePage(){
                          </Link>    
                     })}
                 </div>
-                {/* <div className="homeDate">
-                    <Date/>
-                </div>
-                <div className="homeTransaction">
-                    <Transaction/>
-                    <Transaction/>
-                </div> */}
             </div>
             <div className="addItem">
                 <Link to ="/addtransaction"><AddItem/></Link>

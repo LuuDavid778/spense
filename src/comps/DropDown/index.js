@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import Select from 'react-select';
 
-const optionCategory = [
-    {value: 'Foods&Drinks' , label: 'Foods&Drinks'},
-    {value: 'Bills&Fees' , label: 'Bills&Fees'},
-    {value: 'Beauty&Health' , label: 'Beauty&Health'},
-    {value: 'Personal' , label: 'Personal'},
-    {value: 'Others' , label: 'Others'},
-    {value: 'All Categories' , label: 'All Categories'}
-]
+// const optionCategory = [
+//     {value: 'Foods&Drinks' , label: 'Foods&Drinks'},
+//     {value: 'Bills&Fees' , label: 'Bills&Fees'},
+//     {value: 'Beauty&Health' , label: 'Beauty&Health'},
+//     {value: 'Personal' , label: 'Personal'},
+//     {value: 'Others' , label: 'Others'},
+//     {value: 'All Categories' , label: 'All Categories'}
+// ]
 
 const Container = styled.div`
 width: 100%;
@@ -19,7 +19,7 @@ justify-content: space-between;
 `;
 
 
-export function DropDown({onClick, onChange}) {
+export function DropDown({onClick, onChange, data}) {
 
     function customTheme(theme){
         return{
@@ -34,7 +34,7 @@ export function DropDown({onClick, onChange}) {
 
     return <Container >
         <Select
-            options = {optionCategory}
+            options = {data}
             theme = {customTheme}
             placeholder = 'Categories'
             onChange = {onChange}

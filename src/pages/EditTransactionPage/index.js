@@ -7,6 +7,7 @@ import Switch from 'comps/Switch';
 import './edittransaction.scss';
 import DropDown from 'comps/DropDown';
 import { Link, useLocation } from "react-router-dom";
+import {optionCategory} from '../../utils/constants';
 
 
 export default function EditTransactionPage({onEditComplete}) {
@@ -49,7 +50,7 @@ export default function EditTransactionPage({onEditComplete}) {
         }}></InputLarge>
         </div>
         <div className="DropDownCont">
-        <DropDown />
+        <DropDown data={optionCategory} />
         </div>
         </div>
         <div className="StatusCont">

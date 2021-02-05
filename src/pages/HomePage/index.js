@@ -10,53 +10,67 @@ import Category from '../../comps/Category';
 import './HomePage.scss';
 import { Link, useHistory,Redirect } from "react-router-dom";
 import axios from "axios";
+import {fakedb, optionCategory} from '../../utils/constants';
+import Item from 'antd/lib/list/Item';
+
+// const optionCategory = [
+//     {value: 'Foods&Drinks' , label: 'Foods&Drinks'},
+//     {value: 'Bills&Fees' , label: 'Bills&Fees'},
+//     {value: 'Beauty&Health' , label: 'Beauty&Health'},
+//     {value: 'Personal' , label: 'Personal'},
+//     {value: 'Others' , label: 'Others'},
+//     {value: 'All Categories' , label: 'All Categories'}
+// ]
 
 
+// const fakedb =[
+//     {   
+//         id: 0,
+//         tname: "Roblox Giftcard",
+//         category: "Entertainment",
+//         cost: 25,
+//         status: "Paid",
+//         description: "A giftcard for your kid's favorite game.",
+//         label: 'Others'
+//     },
+//     {
+//         id: 1,
+//         tname: "Gamestop Stock",
+//         category: "Personal",
+//         cost: 10,
+//         status: "Paid",
+//         description: "Your stonk to getting rich",
+//         label: 'Personal'
+//     },
+//     {
+//         id: 2,
+//         tname: "Phone Bill",
+//         category: "Bills & Fees",
+//         cost: 5,
+//         status: "Unpaid",
+//         description: "Bill from Telus",
+//         label: 'Bills&Fees'
 
-const fakedb =[
-    {   
-        id: 0,
-        tname: "Roblox Giftcard",
-        category: "Entertainment",
-        cost: 25,
-        status: "Paid",
-        description: "A giftcard for your kid's favorite game."
-    },
-    {
-        id: 1,
-        tname: "Gamestop Stock",
-        category: "Personal",
-        cost: 10,
-        status: "Paid",
-        description: "Your stonk to getting rich"
+//     },
+//     {
+//         id: 3,
+//         tname: "Bitcoin",
+//         category: "Personal",
+//         cost: 10,
+//         status: "Paid",
+//         description: "making fat bank",
+//         label: 'Personal'
 
-    },
-    {
-        id: 2,
-        tname: "Phone Bill",
-        category: "Bills & Fees",
-        cost: 5,
-        status: "Unpaid",
-        description: "Bill from Telus"
-
-    },
-    {
-        id: 3,
-        tname: "Bitcoin",
-        category: "Personal",
-        cost: 10,
-        status: "Paid",
-        description: "making fat bank"
-
-    },
-]
+//     },
+// ]
 
 console.log(fakedb)
 
 export default function HomePage(){
     const history = useHistory();
 
-const [total, setTotal] = useState()
+const [total, setTotal] = useState();
+const [selected, setSelected] = useState(fakedb);
 
 const handleOnClick = () => history.push('/edittransaction');
 const calculateTotal = () => {
@@ -66,6 +80,13 @@ const calculateTotal = () => {
     calculateTotal()
     },[])
     
+function handleSelect(e){
+    const data = e.fakedbId === -1
+        ? fakedb
+        : fakedb.filter(it=>it.id===e.fakedbId)  || []
+    setSelected(data); 
+};
+console.log('selected',selected);
 
     return(
         <div className="homeCont">
@@ -84,7 +105,8 @@ const calculateTotal = () => {
                     <TotalAmount amount = {total}/>
                 </div>
                 <div className="dropDown">
-                    <DropDown />
+                    <DropDown data={optionCategory}
+                    onChange={handleSelect}/>
                 </div>
                 <div className="selection">
                     <Selection/>
@@ -95,7 +117,21 @@ const calculateTotal = () => {
                     <Date/>
                 </div>
                 <div className="homeTransaction">
-                    {fakedb.map((o)=>{
+                    {!!selected.length && 
+                        selected.map((o)=>{
+                            return <Link to={{ pathname: '/opentransaction', state: { o } }}>
+                            <Transaction handleEdit={()=>{
+                                history.push('/edittransaction',{params: o})
+                            }}handleDelete={()=>{
+                                console.log("deleted")
+                            }}
+                            category={o.category} cost={o.cost} status={o.status} item={o.tname}
+                            ></Transaction>
+                            </Link>    
+                        })
+
+                    }
+                    {/* {fakedb.map((o)=>{
                         return <Link to={{ pathname: '/opentransaction', state: { o } }}>
                         <Transaction handleEdit={()=>{
                             history.push('/edittransaction',{params: o})
@@ -105,7 +141,7 @@ const calculateTotal = () => {
                         category={o.category} cost={o.cost} status={o.status} item={o.tname}
                         ></Transaction>
                          </Link>    
-                    })}
+                    })} */}
                 </div>
             </div>
             <div className="addItem">

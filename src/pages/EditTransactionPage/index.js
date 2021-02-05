@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Upload from 'comps/Upload';
 import Input from 'comps/Input';
 import InputLarge from 'comps/InputLarge';
@@ -7,6 +7,15 @@ import Switch from 'comps/Switch';
 import './edittransaction.scss';
 import DropDown from 'comps/DropDown';
 import { Link, useLocation } from "react-router-dom";
+
+export default function EditTransactionPage ({onEditComplete}) {
+
+    const [transaction, setTransaction] = useState("");
+
+    const updateTransaction = (transaction) => {
+
+        console.log(transaction)
+    }
 
 
 export default function EditTransactionPage() {
@@ -21,7 +30,7 @@ export default function EditTransactionPage() {
     const location = useLocation();
     const myparam = location.state.params;
 
-    console.log("hello",  myparam)
+    console.log(myparam)
     return( <div className="AddPageCont">
         <div className="AddCont">
         <h1>Edit Transaction</h1>
@@ -61,6 +70,7 @@ export default function EditTransactionPage() {
         <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
         </Link>
         <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px" onClick={()=>{
+            onEditComplete(updateTransaction)}} ></Button>
             handleEdit(TransDesc, TransName, TransAmount)
         }}></Button>
         </div>

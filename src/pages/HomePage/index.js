@@ -14,7 +14,7 @@ import axios from "axios";
 
 
 const fakedb =[
-    {
+    {   
         id: 0,
         tname: "Roblox Giftcard",
         category: "Entertainment",
@@ -51,9 +51,7 @@ const fakedb =[
     },
 ]
 
-
-
-
+console.log(fakedb)
 
 export default function HomePage(){
     const history = useHistory();

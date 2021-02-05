@@ -24,16 +24,17 @@ border-radius: 5px;
 border:solid 1px #DDD9D9;
 `;
 
-const Input = ({placeholder, text}) => {
+const Input = ({placeholder, text,value}) => {
   return <InputBox>
   <InputLabel>{text}</InputLabel>
-  <InputCont placeholder={placeholder}/>
+  <InputCont defaultValue={value}placeholder={placeholder}/>
   </InputBox>
 }
 
 Input.defaultProps = {
 placeholder: 'Transaction Name',
-text: 'Transaction Name'
+text: 'Transaction Name',
+value:''
 }
 
 export default Input;

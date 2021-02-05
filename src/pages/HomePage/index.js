@@ -8,8 +8,9 @@ import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
 import './HomePage.scss';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory,Redirect } from "react-router-dom";
 import axios from "axios";
+
 
 
 const fakedb =[
@@ -55,8 +56,11 @@ const fakedb =[
 
 
 export default function HomePage(){
+    const history = useHistory();
+
 const [total, setTotal] = useState()
 
+const handleOnClick = () => history.push('/edittransaction');
 const calculateTotal = () => {
     setTotal(fakedb.reduce((n, {cost}) => n + cost, 0))
 }
@@ -96,7 +100,7 @@ const calculateTotal = () => {
                     {fakedb.map((o)=>{
                         return <Link to={{ pathname: '/opentransaction', state: { o } }}>
                         <Transaction handleEdit={()=>{
-                            console.log("edit")
+                            history.push('/edittransaction',{params: o})
                         }}handleDelete={()=>{
                             console.log("deleted")
                         }}

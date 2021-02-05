@@ -37,7 +37,7 @@ const fakedb =[
         category: "Bills & Fees",
         cost: 5,
         status: "Unpaid",
-        description: "gotta call da hoes"
+        description: "Bill from Telus"
 
     },
     {

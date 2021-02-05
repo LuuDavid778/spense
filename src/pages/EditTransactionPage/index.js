@@ -8,27 +8,22 @@ import './edittransaction.scss';
 import DropDown from 'comps/DropDown';
 import { Link, useLocation } from "react-router-dom";
 
-export default function EditTransactionPage ({onEditComplete}) {
 
+export default function EditTransactionPage({onEditComplete}) {
     const [transaction, setTransaction] = useState("");
-
-    const updateTransaction = (transaction) => {
-
-        console.log(transaction)
-    }
-
-
-export default function EditTransactionPage() {
-    
-    const handleEdit = async (TransName, TransAmount, TransDesc) => {
-    }
-    
     const [TransName, setTransName] = useState("")
     const [TransAmount, setTransAmount] = useState("")
     const [TransDesc, setTransDesc] = useState("")
-
     const location = useLocation();
     const myparam = location.state.params;
+
+
+    const updateTransaction = (transaction) => {
+        console.log(transaction)
+    }
+
+    const handleEdit = async (TransName, TransAmount, TransDesc) => {
+    }
 
     console.log(myparam)
     return( <div className="AddPageCont">
@@ -70,7 +65,7 @@ export default function EditTransactionPage() {
         <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
         </Link>
         <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px" onClick={()=>{
-            onEditComplete(updateTransaction)}} ></Button>
+            onEditComplete(updateTransaction)
             handleEdit(TransDesc, TransName, TransAmount)
         }}></Button>
         </div>

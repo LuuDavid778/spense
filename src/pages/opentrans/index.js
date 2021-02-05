@@ -8,7 +8,6 @@ import CategorySubhead from 'comps/CategorySubhead';
 import { Link } from "react-router-dom";
 
 
-
 const Header = styled.h1`
 margin:0px;
 color:#424242;
@@ -21,17 +20,18 @@ color: ${props=> props.statuscolour ? props.statuscolour : "#F2AB69"};
 const Desc = styled.div`
 width:100%;
 `;
-const OpenTrans = ({statuscolour}) => {
+
+const OpenTrans = ( props, {statuscolour}) => {
 
 const [header, setHeader] = useState("Default Header")
 const [status, setStatus] = useState("Paid")
 const [desc, setDesc] = useState("Default Description")
 const [img, setImg] = useState()
+const [category, setCategory]= useState("Default Category")
 
 
-
-
-
+var itemMemory = props.location.state.o;
+console.log(itemMemory);
 
   return <div>
      <div className="bg">
@@ -40,16 +40,16 @@ const [img, setImg] = useState()
   <div className="main">
   <div className ="image"><Image img={img}></Image></div>
     <div className = "content">
-    <Header>{header}</Header>
+    <Header>{itemMemory.tname}</Header>
   <div className="subheader">
-      <CategorySubhead/>
+      <CategorySubhead category={itemMemory.category} price={itemMemory.cost}/>
   </div>
   <div className = "status">
-  <Status statuscolour={statuscolour}>{status}</Status>
+  <Status statuscolour={statuscolour}>{itemMemory.status}</Status>
   </div>
    
    <div className ="desc">
-   {desc}
+   {itemMemory.description}
    </div>
 
     <div className="navigate">

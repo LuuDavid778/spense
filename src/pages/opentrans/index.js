@@ -5,7 +5,7 @@ import Image from 'comps/Image';
 import './opentrans.scss'
 import '../../../src/App.scss'
 import CategorySubhead from 'comps/CategorySubhead';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 
 const Header = styled.h1`
@@ -22,6 +22,7 @@ width:100%;
 `;
 
 const OpenTrans = ( props, {statuscolour}) => {
+  const history = useHistory();
 
 const [header, setHeader] = useState("Default Header")
 const [status, setStatus] = useState("Paid")
@@ -32,6 +33,7 @@ const [category, setCategory]= useState("Default Category")
 
 var itemMemory = props.location.state.o;
 console.log(itemMemory);
+
 
   return <div>
      <div className="bg">
@@ -56,9 +58,9 @@ console.log(itemMemory);
     
         <Button iconsrc="./deleteicon.png" label="Delete" bgcolour="#F37C75"bwidth="140px" mwidth="140x"></Button>
 
-    <Link to ="/edittransaction">
-      <Button iconsrc="./editicon.png" label="Edit" bwidth="140px" mwidth="140px"></Button>
-    </Link>
+      <Button onClick={()=>{
+        history.push('/edittransaction', {params: itemMemory})
+      }}iconsrc="./editicon.png" label="Edit" bwidth="140px" mwidth="140px"></Button>
     </div>
 
   </div>

@@ -1,4 +1,4 @@
-import OpenTrans from './pages/OpenTrans'
+import OpenTrans from './pages/opentrans'
 import HomePage from './pages/HomePage';
 import AddTransactionPage from 'pages/AddTransactionPage';
 import EditTransactionPage from 'pages/EditTransactionPage';

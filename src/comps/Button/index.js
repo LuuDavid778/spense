@@ -40,9 +40,9 @@ const Icon = styled.img`
  width:30px;
  height:30px;
 `;
-const Button = ({label, bwidth, bgcolour, iconsrc, bheight, mwidth}) => {
+const Button = ({label, bwidth, bgcolour, iconsrc, bheight, mwidth, onClick}) => {
 
-    return <Container height={bheight} bcolour={bgcolour} width={bwidth} mwidth={mwidth}>
+    return <Container height={bheight} bcolour={bgcolour} width={bwidth} mwidth={mwidth} onClick={onClick}>
     <Content>
         <Icon src={iconsrc}></Icon>
         <Label>{label}</Label>
@@ -56,7 +56,8 @@ bheight: null,
 bwidth: null,
 bgcolour: null,
 iconsrc: "./addicon.png",
-mwidth:null
+mwidth:null,
+onClick:()=>{}
 }
 
 export default Button;

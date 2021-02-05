@@ -8,8 +8,9 @@ import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
 import './HomePage.scss';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory,Redirect } from "react-router-dom";
 import axios from "axios";
+
 
 
 const fakedb =[
@@ -17,7 +18,7 @@ const fakedb =[
         id: 0,
         tname: "Roblox Giftcard",
         category: "Entertainment",
-        cost: 100,
+        cost: 25,
         status: "Paid",
         description: "A giftcard for your kid's favorite game."
     },
@@ -25,7 +26,7 @@ const fakedb =[
         id: 1,
         tname: "Gamestop Stock",
         category: "Personal",
-        cost: 6000,
+        cost: 10,
         status: "Paid",
         description: "Your stonk to getting rich"
 
@@ -34,28 +35,38 @@ const fakedb =[
         id: 2,
         tname: "Phone Bill",
         category: "Bills & Fees",
-        cost: 35,
+        cost: 5,
         status: "Unpaid",
-        description: "gotta call da hoes"
+        description: "Bill from Telus"
 
     },
     {
         id: 3,
         tname: "Bitcoin",
         category: "Personal",
-        cost: 32220,
+        cost: 10,
         status: "Paid",
         description: "making fat bank"
 
     },
 ]
 
-
 console.log(fakedb)
 
 export default function HomePage(){
+    const history = useHistory();
 
+const [total, setTotal] = useState()
+
+const handleOnClick = () => history.push('/edittransaction');
+const calculateTotal = () => {
+    setTotal(fakedb.reduce((n, {cost}) => n + cost, 0))
+}
+    useEffect(()=>{
+    calculateTotal()
+    },[])
     
+
     return(
         <div className="homeCont">
             <div className="homeHeader">
@@ -70,7 +81,7 @@ export default function HomePage(){
             </div>
             <div className="totalCont">
                 <div className="totalAmount">
-                    <TotalAmount/>
+                    <TotalAmount amount = {total}/>
                 </div>
                 <div className="dropDown">
                     <DropDown />
@@ -87,7 +98,7 @@ export default function HomePage(){
                     {fakedb.map((o)=>{
                         return <Link to={{ pathname: '/opentransaction', state: { o } }}>
                         <Transaction handleEdit={()=>{
-                            console.log("edit")
+                            history.push('/edittransaction',{params: o})
                         }}handleDelete={()=>{
                             console.log("deleted")
                         }}

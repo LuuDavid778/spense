@@ -9,6 +9,8 @@ import TransactionListItem from '../list-items/TransactionListItem';
 import TransactionSwipeContent from '../list-items/TransactionSwipeContent';
 import { MailIcon, EditIcon, DeleteIcon } from '../list-items/icons';
 
+import Delete from '../../comps/Delete';
+
 import './Transaction.css';
 
 const Transaction = ({handleDelete, handleEdit, category, item, cost, status}) => {
@@ -65,7 +67,7 @@ const Transaction = ({handleDelete, handleEdit, category, item, cost, status}) =
             <SwipeableListItem
               key={id}
               swipeLeft={swipeLeftOptions(text)}
-              swipeRight={swipeRightOptions(text)}
+              swipeRight={swipeRightOptions()}
               onSwipeEnd={handleSwipeEnd}
               onSwipeProgress={handleSwipeProgress}
               onSwipeStart={handleSwipeStart}

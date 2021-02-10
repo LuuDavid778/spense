@@ -77,10 +77,15 @@
         .homeDate{
             margin-bottom: 4px;
         }
+        .DeletePopUp{
+            position:fixed ;
+            z-index: 1;
+        }
     }
     .addItem{
         position: fixed;
         left: 278px;
         top: 720px;
     }
+
 }

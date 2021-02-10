@@ -39,9 +39,9 @@ const Icon = styled.img`
  width:30px;
  height:30px;
 `;
-const Button = ({label, bwidth, bgcolour, iconsrc, bheight}) => {
+const Button = ({label, bwidth, bgcolour, iconsrc, bheight, onClick}) => {
 
-    return <Container height={bheight} bcolour={bgcolour} width={bwidth}>
+    return <Container height={bheight} bcolour={bgcolour} width={bwidth} onClick={onClick}>
     <Content>
         <Icon src={iconsrc}></Icon>
         <Label>{label}</Label>

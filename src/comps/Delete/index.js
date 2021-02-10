@@ -1,6 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, {css} from 'styled-components';
 import Button from 'comps/Button';
+import { NonceProvider } from 'react-select';
 
 
 const Container = styled.div`
@@ -11,7 +12,11 @@ border-radius: 5px;
 display:flex;
 flex-direction:column;
 align-items:center;
-color:white;
+color:black;
+background-color: white;
+display:none;
+${props => props.active === true && css `
+    display:flex;  `  }
 `;
 
 const IconCircle = styled.div`
@@ -48,15 +53,17 @@ justify-content: space-between;
 margin-top:20px;
 `;
 
-const Delete = ({}) => {
+const Delete = ({active, Cancel}) => {
 
-    return <Container>
+    const [PopUp, SetPopUp] = useState(false);
+
+    return <Container active={active}>
 <IconCircle/>
 <Header>You are about to delete an item</Header>
 <Desc>This will remove the transaction from your list. Are you sure? </Desc>
 <ButtonDiv>
-    <Button bheight="40px" iconsrc="" label="Cancel"/>
-    <Button  bheight="40px" iconsrc="" bgcolour="#F37C75" label="Delete" />
+    <Button bheight="40px" iconsrc="./cancelicon.png"  label="Cancel" onClick={Cancel}/>
+    <Button  bheight="40px" iconsrc="./deleteicon.png" bgcolour="#F37C75" label="Delete" onClick={Delete}/>
 </ButtonDiv>
     </Container>
 }

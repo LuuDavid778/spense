@@ -12,7 +12,6 @@ import Delete from '../../comps/Delete';
 import './HomePage.scss';
 import { Link } from "react-router-dom";
 
-const [setShowDelete] = useState(false);
 
 const fakedb =[
     {
@@ -59,6 +58,7 @@ const fakedb =[
 
 export default function HomePage(){
 
+    const [PopUp, SetPopUp] = useState(false);
     
     return(
         <div className="homeCont">
@@ -87,12 +87,19 @@ export default function HomePage(){
                 <div className="homeDate">
                     <Date/>
                 </div>
+                <div className="DeletePopUp">
+                <Delete active={PopUp} Cancel={()=>{
+                    SetPopUp(false);
+                    console.log("Cancel");
+                }}/>
+                </div>
                 <div className="homeTransaction">
                     {fakedb.map((o)=>{
                         return <Transaction handleEdit={()=>{
                             console.log("edit")
                         }}handleDelete={()=>{
-                            setShowDelete(<Delete/>);
+                            SetPopUp(true);
+                            console.log("delete");
                         }}
                         category={o.category} cost={o.cost} status={o.status} item={o.tname}
                         ></Transaction>

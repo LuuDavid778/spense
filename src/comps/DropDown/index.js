@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { IoIosArrowDown } from 'react-icons/io';
 import Select from 'react-select';
 
 const optionCategory = [

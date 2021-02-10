@@ -20,9 +20,10 @@ font-size: 18px;
 `;
 
 const TimeSelect = ({name, bgcolor, stroke, color, radius, width, onSelect})=>{
-    return <Container  bgcolor={bgcolor} stroke={stroke}
-    color={color} radius={radius} width={width}
-    onClick={()=>{onSelect(name);}}>
+    return <Container
+        bgcolor={bgcolor} stroke={stroke}
+        color={color} radius={radius} width={width}
+        onClick={()=>{onSelect(name);}}>
         {name}
     </Container>
 };

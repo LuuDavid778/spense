@@ -17,6 +17,7 @@ padding-right:10px;
 border-radius: ${props => props.radius ? props.radius : "none"};
 font-family: sans-serif;
 font-size: 18px;
+outline:none;
 `;
 
 const TimeSelect = ({name, bgcolor, stroke, color, radius, width, onSelect})=>{

@@ -33,7 +33,7 @@ margin: 2px;
 const TotalAmount = ({amount}) => {
     return<TotalCont>
         <p>Total amount spent:</p>
-        <Amount>-CA ${amount}</Amount>
+        <Amount>${amount}</Amount>
     </TotalCont>
 };
 

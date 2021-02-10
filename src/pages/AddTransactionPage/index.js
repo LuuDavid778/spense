@@ -8,6 +8,7 @@ import Switch from 'comps/Switch';
 import './Addtransaction.scss';
 import {useHistory,} from "react-router-dom";
 import { Link } from "react-router-dom";
+import {optionCategory} from '../../utils/constants';
 
 
 export default function AddTransactionPage() {
@@ -47,7 +48,7 @@ export default function AddTransactionPage() {
                 />
             </div>
             <div className="DropDownCont">
-                <DropDown/>
+                <DropDown data={optionCategory}/>
             </div>
         </div>
         <div className="StatusCont">
@@ -58,11 +59,11 @@ export default function AddTransactionPage() {
         </div>
         <div className="ButtonsCont">
             <Link to ="/">
-                <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="170px"/>
+                <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75" bwidth="157px" mwidth="157px"/>
             </Link>
-            <Button onClick={()=>{
+            <Button  onClick={()=>{
                 handlePost(TransName, TransDesc, TransAmount)
-                }}iconsrc="./addicon.png" label="Add" bwidth="140px"
+                }}iconsrc="./addicon.png" label="Add" bwidth="157px" mwidth="157px"
             />
         </div>
     </div>

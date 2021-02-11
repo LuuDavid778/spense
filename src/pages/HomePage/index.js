@@ -10,13 +10,24 @@ import Category from '../../comps/Category';
 import './HomePage.scss';
 import { Link, useHistory,Redirect } from "react-router-dom";
 import axios from "axios";
+import {fakedb, optionCategory} from '../../utils/constants';
+import Item from 'antd/lib/list/Item';
+
+// const optionCategory = [
+//     {value: 'Foods&Drinks' , label: 'Foods&Drinks'},
+//     {value: 'Bills&Fees' , label: 'Bills&Fees'},
+//     {value: 'Beauty&Health' , label: 'Beauty&Health'},
+//     {value: 'Personal' , label: 'Personal'},
+//     {value: 'Others' , label: 'Others'},
+//     {value: 'All Categories' , label: 'All Categories'}
+// ]
 
 
 
 
 export default function HomePage(){
 
-    const history = useHistory();
+const history = useHistory();
 const [total, setTotal] = useState()
 const [allTrans, setallTrans]= useState([]);
 
@@ -26,8 +37,7 @@ const getTransactions = async () => {
     setallTrans(resp.data.transactions  );
 }
 
-
-
+const [selected, setSelected] = useState(fakedb);
 const handleOnClick = () => history.push('/edittransaction');
 
 
@@ -42,6 +52,13 @@ const calculateTotal = () => {
     getTransactions();
     },[])
     
+function handleSelect(e){
+    const data = e.fakedbId === -1
+        ? fakedb
+        : fakedb.filter(it=>it.id===e.fakedbId)  || []
+    setSelected(data); 
+};
+console.log('selected',selected);
 
     return(
         <div className="homeCont">
@@ -60,7 +77,8 @@ const calculateTotal = () => {
                     <TotalAmount amount = {total}/>
                 </div>
                 <div className="dropDown">
-                    <DropDown />
+                    <DropDown data={optionCategory}
+                    onChange={handleSelect}/>
                 </div>
                 <div className="selection">
                     <Selection/>
@@ -72,16 +90,19 @@ const calculateTotal = () => {
                 </div>
                 <div className="homeTransaction">
                     {allTrans.map((o)=>{
-                        return <Link to={{ pathname: '/opentransaction', state: { o } }}>
-                        <Transaction handleEdit={()=>{
-                            history.push('/edittransaction',{params: o})
-                        }}handleDelete={()=>{
-                            console.log("deleted")
-                        }}
-                        category={o.category} cost={o.cost} status={o.status} item={o.tname}
-                        ></Transaction>
-                         </Link>    
-                    })}
+                    {!!selected.length && 
+                        selected.map((o)=>{
+                            return <Link to={{ pathname: '/opentransaction', state: { o } }}>
+                            <Transaction handleEdit={()=>{
+                                history.push('/edittransaction',{params: o})
+                            }}handleDelete={()=>{
+                                console.log("deleted")
+                            }}
+                            category={o.category} cost={o.cost} status={o.status} item={o.tname}
+                            ></Transaction>
+                            </Link>    
+                        })
+                    }
                 </div>
             </div>
             <div className="addItem">

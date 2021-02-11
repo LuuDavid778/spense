@@ -13,57 +13,33 @@ import axios from "axios";
 
 
 
-const fakedb =[
-    {   
-        id: 0,
-        tname: "Roblox Giftcard",
-        category: "Entertainment",
-        cost: 25,
-        status: "Paid",
-        description: "A giftcard for your kid's favorite game."
-    },
-    {
-        id: 1,
-        tname: "Gamestop Stock",
-        category: "Personal",
-        cost: 10,
-        status: "Paid",
-        description: "Your stonk to getting rich"
-
-    },
-    {
-        id: 2,
-        tname: "Phone Bill",
-        category: "Bills & Fees",
-        cost: 5,
-        status: "Unpaid",
-        description: "Bill from Telus"
-
-    },
-    {
-        id: 3,
-        tname: "Bitcoin",
-        category: "Personal",
-        cost: 10,
-        status: "Paid",
-        description: "making fat bank"
-
-    },
-]
-
-console.log(fakedb)
 
 export default function HomePage(){
-    const history = useHistory();
 
+    const history = useHistory();
 const [total, setTotal] = useState()
+const [allTrans, setallTrans]= useState([]);
+
+
+const getTransactions = async () => {
+    var resp = await axios.get("http://localhost:8080/api/trans")
+    setallTrans(resp.data.transactions  );
+}
+
+
 
 const handleOnClick = () => history.push('/edittransaction');
+
+
+
 const calculateTotal = () => {
-    setTotal(fakedb.reduce((n, {cost}) => n + cost, 0))
+    setTotal(allTrans.reduce((n, {cost}) => n + cost, 0))
 }
+
+
     useEffect(()=>{
-    calculateTotal()
+
+    getTransactions();
     },[])
     
 
@@ -95,7 +71,7 @@ const calculateTotal = () => {
                     <Date/>
                 </div>
                 <div className="homeTransaction">
-                    {fakedb.map((o)=>{
+                    {allTrans.map((o)=>{
                         return <Link to={{ pathname: '/opentransaction', state: { o } }}>
                         <Transaction handleEdit={()=>{
                             history.push('/edittransaction',{params: o})

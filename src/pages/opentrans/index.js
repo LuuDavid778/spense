@@ -56,8 +56,6 @@ console.log(itemMemory);
 
     <div className="navigate">
         <Button iconsrc="./deleteicon.png" label="Delete" bgcolour="#F37C75"bwidth="140px"></Button>
-      <Button iconsrc="./editicon.png" label="Edit" bwidth="140px"></Button>  
-
       <Button onClick={()=>{
         history.push('/edittransaction', {params: itemMemory})
       }}iconsrc="./editicon.png" label="Edit" bwidth="140px" mwidth="140px"></Button>

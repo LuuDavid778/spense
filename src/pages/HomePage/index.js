@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Searchbar from '../../comps/Searchbar';
 import TotalAmount from '../../comps/TotalAmount';
 import DropDown from '../../comps/DropDown';
@@ -10,7 +10,6 @@ import Category from '../../comps/Category';
 import CombinedDrop from 'comps/CombinedDrop';
 import Delete from '../../comps/Delete';
 import './HomePage.scss';
-import { Link } from "react-router-dom";
 import { Link, useHistory,Redirect } from "react-router-dom";
 import axios from "axios";
 import {fakedb, optionCategory} from '../../utils/constants';
@@ -82,7 +81,6 @@ useEffect(()=>{
                     <TotalAmount amount = {total}/>
                 </div>
                 <div className="dropDown">
-                    <CombinedDrop label="Foods & Drinks" />
                     <DropDown data={optionCategory}
                     onChange={handleSelect}/>
                 </div>

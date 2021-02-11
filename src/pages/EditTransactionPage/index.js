@@ -7,7 +7,6 @@ import Button from 'comps/Button';
 import Switch from 'comps/Switch';
 import './edittransaction.scss';
 import CombinedDrop from 'comps/CombinedDrop';
-import DropDown from 'comps/DropDown';
 import { Link, useLocation } from "react-router-dom";
 import {optionCategory} from '../../utils/constants';
 
@@ -52,7 +51,6 @@ export default function EditTransactionPage({onEditComplete}) {
         }}></InputLarge>
         </div>
         <div className="DropDownCont">
-        <CombinedDrop label="Transaction Category"></CombinedDrop>
         <DropDown data={optionCategory} />
         </div>
         </div>
@@ -63,16 +61,8 @@ export default function EditTransactionPage({onEditComplete}) {
         <div className="SwitchButtonCont">
             <Switch/>
             </div>
-        <div className="SwitchNameCont">
-        <h9>Paid | </h9> 
-        <div className="UnpaidCont">
-        <h9>Unpaid</h9>
-        </div>   
-        </div>
-        </div>
+    </div>
         <div className="ButtonsCont">
-        <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="140px"></Button>
-        <Button iconsrc="./addicon.png" label="Saveicon" bwidth="140px"></Button>
         <Link to ="/">
         <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
         </Link>

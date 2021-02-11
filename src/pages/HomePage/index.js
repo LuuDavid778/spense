@@ -36,16 +36,17 @@ const handleOnClick = () => history.push('/edittransaction');
 
 const getTransactions = async () => {
     var resp = await axios.get("http://localhost:8080/api/trans")
-    setallTrans(resp.data.transactions  );
+    // console.log(resp.data.transactions)
+    setallTrans(...[resp.data.transactions])
+    console.log(allTrans)
+    var data = resp.data.transactions
+    // setTotal(allTrans.reduce((n, {cost}) => n + cost, 0))
+    setTotal(data.reduce((n, {cost}) => n + cost, 0))
+    console.log(total)
 }
 
 
 
-
-
-const calculateTotal = () => {
-    setTotal(allTrans.reduce((n, {cost}) => n + cost, 0))
-}
 function handleSelect(e){
     const data = e.allTransId === -1
         ? allTrans
@@ -93,7 +94,7 @@ useEffect(()=>{
                 <div className="homeTransaction">
                     
                     {!!selected.length && 
-                        selected.map((o)=>{
+                        allTrans.map((o)=>{
                             return <Link to={{ pathname: '/opentransaction', state: { o } }}>
                             <Transaction handleEdit={()=>{
                                 history.push('/edittransaction',{params: o})

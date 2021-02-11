@@ -30,35 +30,37 @@ export default function HomePage(){
 const history = useHistory();
 const [total, setTotal] = useState()
 const [allTrans, setallTrans]= useState([]);
+const [selected, setSelected] = useState(fakedb);
 
+const handleOnClick = () => history.push('/edittransaction');
 
 const getTransactions = async () => {
     var resp = await axios.get("http://localhost:8080/api/trans")
     setallTrans(resp.data.transactions  );
 }
 
-const [selected, setSelected] = useState(fakedb);
-const handleOnClick = () => history.push('/edittransaction');
+
 
 
 
 const calculateTotal = () => {
     setTotal(allTrans.reduce((n, {cost}) => n + cost, 0))
 }
-
-
-    useEffect(()=>{
-
-    getTransactions();
-    },[])
-    
 function handleSelect(e){
-    const data = e.fakedbId === -1
-        ? fakedb
-        : fakedb.filter(it=>it.id===e.fakedbId)  || []
+    const data = e.allTransId === -1
+        ? allTrans
+        : allTrans.filter(it=>it.id===e.allTransId)  || []
     setSelected(data); 
 };
 console.log('selected',selected);
+
+
+
+useEffect(()=>{
+    getTransactions();
+    },[])
+    
+
 
     return(
         <div className="homeCont">
@@ -89,7 +91,7 @@ console.log('selected',selected);
                     <Date/>
                 </div>
                 <div className="homeTransaction">
-                    {allTrans.map((o)=>{
+                    
                     {!!selected.length && 
                         selected.map((o)=>{
                             return <Link to={{ pathname: '/opentransaction', state: { o } }}>

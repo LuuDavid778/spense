@@ -26,71 +26,44 @@ import Item from 'antd/lib/list/Item';
 // ]
 
 
-// const fakedb =[
-//     {   
-//         id: 0,
-//         tname: "Roblox Giftcard",
-//         category: "Entertainment",
-//         cost: 25,
-//         status: "Paid",
-//         description: "A giftcard for your kid's favorite game.",
-//         label: 'Others'
-//     },
-//     {
-//         id: 1,
-//         tname: "Gamestop Stock",
-//         category: "Personal",
-//         cost: 10,
-//         status: "Paid",
-//         description: "Your stonk to getting rich",
-//         label: 'Personal'
-//     },
-//     {
-//         id: 2,
-//         tname: "Phone Bill",
-//         category: "Bills & Fees",
-//         cost: 5,
-//         status: "Unpaid",
-//         description: "Bill from Telus",
-//         label: 'Bills&Fees'
 
-//     },
-//     {
-//         id: 3,
-//         tname: "Bitcoin",
-//         category: "Personal",
-//         cost: 10,
-//         status: "Paid",
-//         description: "making fat bank",
-//         label: 'Personal'
-
-//     },
-// ]
-
-console.log(fakedb)
 
 export default function HomePage(){
-    const history = useHistory();
 
-    const [PopUp, SetPopUp] = useState(false);
-const [total, setTotal] = useState();
+ const [PopUp, SetPopUp] = useState(false);
+const history = useHistory();
+const [total, setTotal] = useState()
+const [allTrans, setallTrans]= useState([]);
 const [selected, setSelected] = useState(fakedb);
 
 const handleOnClick = () => history.push('/edittransaction');
-const calculateTotal = () => {
-    setTotal(fakedb.reduce((n, {cost}) => n + cost, 0))
+
+const getTransactions = async () => {
+    var resp = await axios.get("http://localhost:8080/api/trans")
+    // console.log(resp.data.transactions)
+    setallTrans(...[resp.data.transactions])
+    console.log(allTrans)
+    var data = resp.data.transactions
+    // setTotal(allTrans.reduce((n, {cost}) => n + cost, 0))
+    setTotal(data.reduce((n, {cost}) => n + cost, 0))
+    console.log(total)
 }
-    useEffect(()=>{
-    calculateTotal()
-    },[])
- 
+
 function handleSelect(e){
-    const data = e.fakedbId === -1
-        ? fakedb
-        : fakedb.filter(it=>it.id===e.fakedbId)  || []
+    const data = e.allTransId === -1
+        ? allTrans
+        : allTrans.filter(it=>it.id===e.allTransId)  || []
     setSelected(data); 
 };
 console.log('selected',selected);
+
+
+
+useEffect(()=>{
+    getTransactions();
+    },[])
+    
+
 
     return(
         <div className="homeCont">
@@ -128,11 +101,8 @@ console.log('selected',selected);
                 }}/>
                 </div>
                 <div className="homeTransaction">
-                    {fakedb.map((o)=>{
-                        return <Transaction handleEdit={()=>{
-                            console.log("edit")
                     {!!selected.length && 
-                        selected.map((o)=>{
+                        allTrans.map((o)=>{
                             return <Link to={{ pathname: '/opentransaction', state: { o } }}>
                             <Transaction handleEdit={()=>{
                                 history.push('/edittransaction',{params: o})
@@ -143,21 +113,7 @@ console.log('selected',selected);
                             ></Transaction>
                             </Link>    
                         })
-
                     }
-                    {/* {fakedb.map((o)=>{
-                        return <Link to={{ pathname: '/opentransaction', state: { o } }}>
-                        <Transaction handleEdit={()=>{
-                            history.push('/edittransaction',{params: o})
-                        }}handleDelete={()=>{
-                            SetPopUp(true);
-                            console.log("delete");
-                        }}
-                        category={o.category} cost={o.cost} status={o.status} item={o.tname}
-                        ></Transaction>
-                    })}
-                         </Link>    
-                    })} */}
                 </div>
             </div>
             <div className="addItem">

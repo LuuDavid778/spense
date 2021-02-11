@@ -1,40 +1,40 @@
-// import { Dropdown } from 'antd'
-// import React, { useState } from 'react'
-// import styled from 'styled-components'
-// import DropDown from 'comps/DropDown'
-// import Category from 'comps/Category'
+import { Dropdown } from 'antd'
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import DropDown from 'comps/DropDown'
+import Category from 'comps/Category'
 
-// const Container = styled.div`
-// width:100%;
-// max-width: 353px;
-// height:100%;
-// max-height:203px;
-// `
+const Container = styled.div`
+width:100%;
+max-width: 353px;
+height:100%;
+max-height:203px;
+`
 
-// const Display = styled.div`
-// display:${props=>props.showMenu ? "inline-flex" : "none"}
-// `
-
-
-// const CombinedDrop = ({label}) =>{
-
-//     const [showMenu, setShowMenu] = useState(false);
+const Display = styled.div`
+display:${props=>props.showMenu ? "inline-flex" : "none"}
+`
 
 
-//     return <Container>
-//         <div onClick={()=>{
-//             setShowMenu(!showMenu);
-//         }} >
-//         <DropDown label={label}/>
-//         </div>
-//         <Display showMenu={showMenu} >
-//         <Category />
-//         </Display>
-//     </Container>
-// }
+const CombinedDrop = ({label}) =>{
 
-// CombinedDrop.defaultProps={
-//  label:"text"
-// }
+    const [showMenu, setShowMenu] = useState(false);
 
-// export default CombinedDrop;
+
+    return <Container>
+        <div onClick={()=>{
+            setShowMenu(!showMenu);
+        }} >
+        <DropDown label={label}/>
+        </div>
+        <Display showMenu={showMenu} >
+        <Category />
+        </Display>
+    </Container>
+}
+
+CombinedDrop.defaultProps={
+ label:"text"
+}
+
+export default CombinedDrop;

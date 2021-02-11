@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState} from 'react';
 import Searchbar from '../../comps/Searchbar';
 import TotalAmount from '../../comps/TotalAmount';
 import DropDown from '../../comps/DropDown';
@@ -7,7 +7,10 @@ import Date from '../../comps/Date';
 import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
+import CombinedDrop from 'comps/CombinedDrop';
+import Delete from '../../comps/Delete';
 import './HomePage.scss';
+import { Link } from "react-router-dom";
 import { Link, useHistory,Redirect } from "react-router-dom";
 import axios from "axios";
 import {fakedb, optionCategory} from '../../utils/constants';
@@ -27,6 +30,7 @@ import Item from 'antd/lib/list/Item';
 
 export default function HomePage(){
 
+ const [PopUp, SetPopUp] = useState(false);
 const history = useHistory();
 const [total, setTotal] = useState()
 const [allTrans, setallTrans]= useState([]);
@@ -44,8 +48,6 @@ const getTransactions = async () => {
     setTotal(data.reduce((n, {cost}) => n + cost, 0))
     console.log(total)
 }
-
-
 
 function handleSelect(e){
     const data = e.allTransId === -1
@@ -80,6 +82,7 @@ useEffect(()=>{
                     <TotalAmount amount = {total}/>
                 </div>
                 <div className="dropDown">
+                    <CombinedDrop label="Foods & Drinks" />
                     <DropDown data={optionCategory}
                     onChange={handleSelect}/>
                 </div>
@@ -91,8 +94,13 @@ useEffect(()=>{
                 <div className="homeDate">
                     <Date/>
                 </div>
+                <div className="DeletePopUp">
+                <Delete active={PopUp} Cancel={()=>{
+                    SetPopUp(false);
+                    console.log("Cancel");
+                }}/>
+                </div>
                 <div className="homeTransaction">
-                    
                     {!!selected.length && 
                         allTrans.map((o)=>{
                             return <Link to={{ pathname: '/opentransaction', state: { o } }}>

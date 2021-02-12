@@ -27,10 +27,10 @@ color: #676767;
 border:solid 1px #DDD9D9;
 `;
 
-const Input = ({placeholder, text, value}) => {
+const Input = ({placeholder, text, value, onChange}) => {
   return <InputBox>
   <InputLabel>{text}</InputLabel>
-  <InputCont defaultValue={value} placeholder={placeholder}/>
+  <InputCont defaultValue={value} placeholder={placeholder} onChange={onChange}/>
   </InputBox>
 }
 

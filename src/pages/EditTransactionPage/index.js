@@ -9,9 +9,11 @@ import './edittransaction.scss';
 import CombinedDrop from 'comps/CombinedDrop';
 import { Link, useLocation } from "react-router-dom";
 import {optionCategory} from '../../utils/constants';
+import axios from 'axios';
 
 
 export default function EditTransactionPage({onEditComplete}) {
+    const [selectedId, setSelected] = useState(null);
     const [transaction, setTransaction] = useState("");
     const [TransName, setTransName] = useState("")
     const [TransAmount, setTransAmount] = useState("")
@@ -20,8 +22,15 @@ export default function EditTransactionPage({onEditComplete}) {
     const myparam = location.state.params;
 
 
-    const updateTransaction = (transaction) => {
-        console.log(transaction)
+    const updateTransaction = async(transaction, TransName) => {
+        console.log(TransName)
+        if(selectedId === null){
+            return false;
+        }
+        var resp = await axios.post("http://localhost:8080/api/trans", {
+            id:selectedId,
+            tname: TransName
+        });
     }
 
     const handleEdit = async (TransName, TransAmount, TransDesc) => {

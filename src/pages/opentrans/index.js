@@ -6,7 +6,8 @@ import './opentrans.scss'
 import '../../../src/App.scss'
 import CategorySubhead from 'comps/CategorySubhead';
 import { Link, useHistory } from "react-router-dom";
-
+import Delete from 'comps/Delete';
+import axios from 'axios'
 
 const Header = styled.h1`
 margin:0px;
@@ -29,13 +30,23 @@ const [status, setStatus] = useState("Paid")
 const [desc, setDesc] = useState("Default Description")
 const [img, setImg] = useState()
 const [category, setCategory]= useState("Default Category")
-
+const [deleteId, setDeleteId] = useState(null)
 
 var itemMemory = props.location.state.o;
-console.log(itemMemory);
+
+const DeleteTransaction = async () =>{
+
+  var resp = await axios.delete("http://localhost:8080/api/trans/"+ itemMemory.id);
+  history.push('/')
+  }
+  
+
+
+
 
 
   return <div>
+    
      <div className="bg">
      <Link to ="/"><img  className ="exiticon" src = "./exiticon.png"></img></Link>
        </div>
@@ -55,7 +66,9 @@ console.log(itemMemory);
    </div>
 
     <div className="navigate">
-        <Button iconsrc="./deleteicon.png" label="Delete" bgcolour="#F37C75"bwidth="140px"></Button>
+        <Button iconsrc="./deleteicon.png" label="Delete" bgcolour="#F37C75"bwidth="140px" onClick={()=>{
+          DeleteTransaction();
+        }}></Button>
       <Button onClick={()=>{
         history.push('/edittransaction', {params: itemMemory})
       }}iconsrc="./editicon.png" label="Edit" bwidth="140px" mwidth="140px"></Button>

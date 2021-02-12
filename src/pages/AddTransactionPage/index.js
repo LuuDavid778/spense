@@ -13,14 +13,17 @@ import {optionCategory} from '../../utils/constants';
 
 export default function AddTransactionPage() {
     
-    
-    const handlePost = async (TransName, TransAmount, TransDesc) => {
-    }
-    
+
     const history = useHistory();
     const [TransName, setTransName] = useState("")
     const [TransAmount, setTransAmount] = useState("")
     const [TransDesc, setTransDesc] = useState("")
+    const [status, setStatus] = useState("Unpaid")
+
+     
+    const handlePost = async () => {
+        console.log(TransName, TransAmount, TransDesc, status)
+    }
 
     return( <div className="AddPageCont">
         <div className="AddCont">
@@ -55,14 +58,16 @@ export default function AddTransactionPage() {
             <p>Transaction Status</p>
         </div>
         <div className="SwitchCont">
-            <Switch/>
+            <Switch handleToggle={(estatus)=>{
+                setStatus(estatus)
+            }}/>
         </div>
         <div className="ButtonsCont">
             <Link to ="/">
                 <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75" bwidth="157px" mwidth="157px"/>
             </Link>
             <Button  onClick={()=>{
-                handlePost(TransName, TransDesc, TransAmount)
+                handlePost(TransName, TransDesc, TransAmount, status)
                 }}iconsrc="./addicon.png" label="Add" bwidth="157px" mwidth="157px"
             />
         </div>

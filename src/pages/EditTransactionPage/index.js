@@ -16,6 +16,7 @@ export default function EditTransactionPage({onEditComplete}) {
     const [TransName, setTransName] = useState("")
     const [TransAmount, setTransAmount] = useState("")
     const [TransDesc, setTransDesc] = useState("")
+    const [status, setStatus] = useState("")
     const location = useLocation();
     const myparam = location.state.params;
 
@@ -59,7 +60,9 @@ export default function EditTransactionPage({onEditComplete}) {
         </div>
         <div className="SwitchCont">
         <div className="SwitchButtonCont">
-            <Switch/>
+            <Switch handleToggle={(e)=>{
+                setStatus(e)
+            }}/>
             </div>
     </div>
         <div className="ButtonsCont">

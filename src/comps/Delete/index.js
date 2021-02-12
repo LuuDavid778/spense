@@ -12,12 +12,13 @@ border-radius: 5px;
 display:flex;
 flex-direction:column;
 align-items:center;
-color:black;
+color:#676767;
 background-color: white;
 display:none;
 ${props => props.active === true && css `
     display:flex;  `  }
 `;
+
 
 const IconCircle = styled.div`
 width:100%;
@@ -36,6 +37,8 @@ background-size:50%;
 
 
 const Header = styled.div`
+font-size:18px;
+font-weight: 700;
 margin-top: -20px;
 margin-bottom:20px;
 `;
@@ -53,10 +56,9 @@ justify-content: space-between;
 margin-top:20px;
 `;
 
-const Delete = ({active, Cancel}) => {
+const Delete = ({active, Cancel, Delete}) => {
 
-    const [PopUp, SetPopUp] = useState(false);
-
+    
     return <Container active={active}>
 <IconCircle/>
 <Header>You are about to delete an item</Header>

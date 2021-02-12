@@ -75,10 +75,10 @@ const TransactionListItem = ({category, item, cost, status, size, color, display
 
             <Left>
                 <Textcontrol size="18px" color="black">
-                {category}
-                </Textcontrol >
-                <Textcontrol size="14px" color="black">
                 {item}
+                </Textcontrol >
+                <Textcontrol size="14px" color="black"> 
+                {category}
                 </Textcontrol>
             </Left>
 

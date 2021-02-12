@@ -7,28 +7,40 @@ import Button from 'comps/Button';
 import Switch from 'comps/Switch';
 import './edittransaction.scss';
 import CombinedDrop from 'comps/CombinedDrop';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory} from "react-router-dom";
 import {optionCategory} from '../../utils/constants';
+import axios from 'axios';
 
 
 export default function EditTransactionPage({onEditComplete}) {
+    const [selectedId, setSelected] = useState(null);
     const [transaction, setTransaction] = useState("");
-    const [TransName, setTransName] = useState("")
-    const [TransAmount, setTransAmount] = useState("")
-    const [TransDesc, setTransDesc] = useState("")
-    const [status, setStatus] = useState("")
     const location = useLocation();
+    const history = useHistory();
     const myparam = location.state.params;
+    const [TransName, setTransName] = useState(myparam.tname)
+    const [TransAmount, setTransAmount] = useState(myparam.cost)
+    const [TransDesc, setTransDesc] = useState(myparam.description)
+    const [status, setStatus] = useState(myparam.status)
+    const [category, setCategory] = useState(myparam.category)
 
 
-    const updateTransaction = (transaction) => {
-        console.log(transaction)
-    }
 
     const handleEdit = async (TransName, TransAmount, TransDesc) => {
+        // console.log(TransName, TransAmount, TransDesc, status);
+        var resp = await axios.patch("http://localhost:8080/api/trans/" + myparam.id, {
+            tname: TransName,
+            cost:TransAmount,
+            description:TransDesc,
+            status:status,
+            category:"Temporary Category"
+        });
+
+        history.push("/")
+        console.log(resp)
     }
 
-    console.log(myparam)
+
     return( <div className="AddPageCont">
         <div className="AddCont">
         <h1>Edit Transaction</h1>
@@ -42,7 +54,7 @@ export default function EditTransactionPage({onEditComplete}) {
         }}/>
         </div>
         <div className="TransactionCont">
-        <Input  value={myparam.cost}text="Transaction Amount ($)" placeholder="Transaction Amount" onChange={(e)=>{
+        <Input  value={myparam.cost} text="Transaction Amount ($)" placeholder="Transaction Amount" onChange={(e)=>{
             setTransAmount(e.target.value)
         }}></Input>
         </div>
@@ -63,6 +75,9 @@ export default function EditTransactionPage({onEditComplete}) {
             <Switch handleToggle={(e)=>{
                 setStatus(e)
             }}/>
+            <button onClick={()=>{
+                console.log(myparam.id)
+            }}></button>
             </div>
     </div>
         <div className="ButtonsCont">
@@ -70,8 +85,7 @@ export default function EditTransactionPage({onEditComplete}) {
         <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
         </Link>
         <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px" onClick={()=>{
-            onEditComplete(updateTransaction)
-            handleEdit(TransDesc, TransName, TransAmount)
+            handleEdit(TransName, TransAmount, TransDesc )
         }}></Button>
         </div>
     </div>

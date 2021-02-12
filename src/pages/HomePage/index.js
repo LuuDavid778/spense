@@ -36,6 +36,7 @@ const history = useHistory();
 const [total, setTotal] = useState()
 const [allTrans, setallTrans]= useState([]);
 const [selected, setSelected] = useState(fakedb);
+const [deleteId, setDeleteId] = useState();
 
 const handleOnClick = () => history.push('/edittransaction');
 
@@ -52,6 +53,8 @@ const getTransactions = async () => {
     console.log(total)
 }
 
+
+
 function handleSelect(e){
     const data = e.allTransId === -1
         ? allTrans
@@ -59,12 +62,20 @@ function handleSelect(e){
     setSelected(data); 
 };
 
+const ToggleDelete = (o) => {
+    SetPopUp(true);
+    setModalVisible(true);
+}
+
+
 const DeleteTransaction = async () =>{
-    
-var resp = await axios.delete("http://localhost:8080/api/trans/"+params.allTransId);
+
+var resp = await axios.delete("http://localhost:8080/api/trans/"+ deleteId);
 getTransactions();
 
 }
+
+
 
 console.log('selected',selected);
 
@@ -110,6 +121,7 @@ useEffect(()=>{
                     SetPopUp(false);
                     setModalVisible(!modalVisible);
                     console.log("Cancel");
+
                 }}
                 Delete={()=>{
                     DeleteTransaction();
@@ -126,10 +138,8 @@ useEffect(()=>{
                             <Transaction handleEdit={()=>{
                                 history.push('/edittransaction',{params: o})
                             }}handleDelete={()=>{
-                                history.push({params: o})
-                                SetPopUp(true);
-                                setModalVisible(true);
-                                console.log("deleted")
+                                setDeleteId(o.id)
+                                ToggleDelete()
                             }}
                             category={o.category} cost={o.cost} status={o.status} item={o.tname}
                             ></Transaction>

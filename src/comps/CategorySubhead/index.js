@@ -30,7 +30,6 @@ const CategorySubhead = ({iconsrc, category, price}) => {
 
     return <Container>
 <InnerCont>
-<CategoryImg src={iconsrc}></CategoryImg>    
 <CategoryName>{category}</CategoryName>
 </InnerCont>
 <Price>${price}</Price>

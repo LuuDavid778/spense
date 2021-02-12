@@ -9,9 +9,11 @@ import './edittransaction.scss';
 import CombinedDrop from 'comps/CombinedDrop';
 import { Link, useLocation } from "react-router-dom";
 import {optionCategory} from '../../utils/constants';
+import axios from 'axios';
 
 
 export default function EditTransactionPage({onEditComplete}) {
+    const [selectedId, setSelected] = useState(null);
     const [transaction, setTransaction] = useState("");
     const [TransName, setTransName] = useState("")
     const [TransAmount, setTransAmount] = useState("")
@@ -21,11 +23,20 @@ export default function EditTransactionPage({onEditComplete}) {
     const myparam = location.state.params;
 
 
-    const updateTransaction = (transaction) => {
-        console.log(transaction)
-    }
 
     const handleEdit = async (TransName, TransAmount, TransDesc) => {
+        console.log(TransName)
+        if(selectedId === null){
+            return false;
+        }
+        var resp = await axios.patch("http://localhost:8080/api/trans/" + myparam.id, {
+            tname: TransName,
+            cost:TransAmount,
+            description:TransDesc,
+            status:status,
+            category:"foods&drinks"
+            // category:
+        });
     }
 
     console.log(myparam)
@@ -63,6 +74,9 @@ export default function EditTransactionPage({onEditComplete}) {
             <Switch handleToggle={(e)=>{
                 setStatus(e)
             }}/>
+            <button onClick={()=>{
+                console.log(myparam.id)
+            }}></button>
             </div>
     </div>
         <div className="ButtonsCont">
@@ -70,7 +84,6 @@ export default function EditTransactionPage({onEditComplete}) {
         <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
         </Link>
         <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px" onClick={()=>{
-            onEditComplete(updateTransaction)
             handleEdit(TransDesc, TransName, TransAmount)
         }}></Button>
         </div>

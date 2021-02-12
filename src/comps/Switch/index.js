@@ -11,23 +11,23 @@ const Container = styled.div`
 display:flex;
 `;
 
-const Toggle = () => {
+const Toggle = ({handleToggle}) => {
     const [checked, setChecked] = useState(false);
     const [status, setStatus] = useState("Unpaid");
     const [statuscolor, setStatusColor]= useState(null)
     const handleChange = nextChecked => {
      
       setChecked(nextChecked);
-      if (status == "Unpaid"){
+      if (status === "Unpaid"){
         setStatus("Paid")
         setStatusColor("#698FF2")
         
-      } else if (status == "Paid"){
+      } else if (status === "Paid"){
         setStatus("Unpaid")
         setStatusColor("#F2AB69")
       }
     };
-    console.log(status)
+
     return (
       <Container>
           <Switch
@@ -37,13 +37,13 @@ const Toggle = () => {
             offColor="#F2AB69"
             onColor="#698FF2"
           />
-<Status color={statuscolor}>{status}</Status>
+<Status onChange={handleToggle(status)}color={statuscolor}>{status}</Status>
 </Container>
     );
   };
 
 Toggle.defaultProps = {
-
+handleToggle:()=>{}
 }
 
   export default Toggle;

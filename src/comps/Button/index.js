@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // import Addicon from './addicon.png'
 
 const Container = styled.button`
-width:100%;
+min-width: ${props => props.mwidth ? props.mwidth : null};
 height: ${props => props.height ? props.height : "50px"};
 max-width: ${props => props.width ? props.width : "158px"};
 border-radius: 5px;
@@ -39,8 +39,8 @@ const Icon = styled.img`
  width:30px;
  height:30px;
 `;
-const Button = ({label, bwidth, bgcolour, iconsrc, bheight, onClick}) => {
-    return <Container height={bheight} bcolour={bgcolour} width={bwidth} onClick={onClick}>
+const Button = ({label, bwidth, bgcolour, iconsrc, bheight, onClick, mwidth}) => {
+    return <Container height={bheight} bcolour={bgcolour} width={bwidth} onClick={onClick} mwidth={mwidth}>
     <Content>
         <Icon src={iconsrc}></Icon>
         <Label>{label}</Label>

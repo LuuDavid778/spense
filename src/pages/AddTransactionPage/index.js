@@ -9,6 +9,7 @@ import './Addtransaction.scss';
 import {useHistory,} from "react-router-dom";
 import { Link } from "react-router-dom";
 import {optionCategory} from '../../utils/constants';
+import axios from 'axios';
 
 
 export default function AddTransactionPage() {
@@ -22,9 +23,20 @@ export default function AddTransactionPage() {
     const [Category, setCategory] = useState("");
 
      
-    const handlePost = async () => {
-        console.log(TransName, TransAmount, TransDesc, status, Category)
+    const handlePost = async (TransName, TransAmount, TransDesc, status, Category) => {
+        // console.log(TransName, TransAmount, TransDesc, status, Category)
+        var resp = await axios.post("http://localhost:8080/api/trans/",{
+            tname: TransName,
+            cost:TransAmount,
+            description:TransDesc,
+            status:status,
+            category:Category
+        });
+
+        history.push("/")
+        console.log(resp)
     }
+    
 
     return( <div className="AddPageCont">
         <div className="AddCont">
@@ -71,7 +83,7 @@ export default function AddTransactionPage() {
                 <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75" bwidth="157px" mwidth="157px"/>
             </Link>
             <Button  onClick={()=>{
-                handlePost(TransName, TransDesc, TransAmount, status)
+                handlePost(TransName, TransAmount, TransDesc, status, Category)
                 }}iconsrc="./addicon.png" label="Add" bwidth="157px" mwidth="157px"
             />
         </div>

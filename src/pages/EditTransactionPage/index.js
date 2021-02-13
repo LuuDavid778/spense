@@ -22,18 +22,18 @@ export default function EditTransactionPage({onEditComplete}) {
     const [TransAmount, setTransAmount] = useState(myparam.cost)
     const [TransDesc, setTransDesc] = useState(myparam.description)
     const [status, setStatus] = useState(myparam.status)
-    const [category, setCategory] = useState(myparam.category)
+    const [Category, setCategory] = useState(myparam.category)
 
 
 
-    const handleEdit = async (TransName, TransAmount, TransDesc) => {
+    const handleEdit = async (TransName, TransAmount, TransDesc, Category) => {
         // console.log(TransName, TransAmount, TransDesc, status);
         var resp = await axios.patch("http://localhost:8080/api/trans/" + myparam.id, {
             tname: TransName,
             cost:TransAmount,
             description:TransDesc,
             status:status,
-            category:"Temporary Category"
+            category:Category
         });
 
         history.push("/")
@@ -64,7 +64,11 @@ export default function EditTransactionPage({onEditComplete}) {
         }}></InputLarge>
         </div>
         <div className="DropDownCont">
-        <DropDown data={optionCategory} />
+        <DropDown data={optionCategory} onChange = {(value)=>{
+                    setCategory(value.value)
+                    console.log(Category)
+                }}
+        />
         </div>
         </div>
         <div className="StatusCont">
@@ -85,7 +89,7 @@ export default function EditTransactionPage({onEditComplete}) {
         <Button iconsrc="./cancelicon.png" label="Cancel" bgcolour="#F37C75"bwidth="157px" mwidth="157px"></Button>
         </Link>
         <Button iconsrc="./saveicon.png" label="Save" bwidth="157px" mwidth="157px" onClick={()=>{
-            handleEdit(TransName, TransAmount, TransDesc )
+            handleEdit(TransName, TransAmount, TransDesc, Category)
         }}></Button>
         </div>
     </div>

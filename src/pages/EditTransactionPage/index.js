@@ -75,9 +75,6 @@ export default function EditTransactionPage({onEditComplete}) {
             <Switch handleToggle={(e)=>{
                 setStatus(e)
             }}/>
-            <button onClick={()=>{
-                console.log(myparam.id)
-            }}></button>
             </div>
     </div>
         <div className="ButtonsCont">

@@ -19,10 +19,11 @@ export default function AddTransactionPage() {
     const [TransAmount, setTransAmount] = useState("")
     const [TransDesc, setTransDesc] = useState("")
     const [status, setStatus] = useState("Unpaid")
+    const [Category, setCategory] = useState("");
 
      
     const handlePost = async () => {
-        console.log(TransName, TransAmount, TransDesc, status)
+        console.log(TransName, TransAmount, TransDesc, status, Category)
     }
 
     return( <div className="AddPageCont">
@@ -51,7 +52,10 @@ export default function AddTransactionPage() {
                 />
             </div>
             <div className="DropDownCont">
-                <DropDown data={optionCategory}/>
+                <DropDown data={optionCategory} onChange = {(value)=>{
+                    setCategory(value.value)
+                    console.log(Category)
+                }}/>
             </div>
         </div>
         <div className="StatusCont">

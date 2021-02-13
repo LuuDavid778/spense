@@ -17,7 +17,7 @@ const Image = ({img}) => {
 };
 
 Image.defaultProps = {
-    img:'./subway.png',
+    img:'./CAD.jpg',
 
 };
 

@@ -34,32 +34,26 @@ export default function HomePage(){
  const [modalVisible, setModalVisible] = useState(false);
 const history = useHistory();
 const [total, setTotal] = useState()
-const [allTrans, setallTrans]= useState([]);
-const [selected, setSelected] = useState(fakedb);
+const [allTrans, setAllTrans]= useState([]);
 const [deleteId, setDeleteId] = useState();
-const [trans, setTrans]=useState([])
-
-const handleOnClick = () => history.push('/edittransaction');
-
-const params = useParams();
+const [selected, setSelected]=useState([])
 
 const getTransactions = async () => {
-    var resp = await axios.get("http://localhost:8080/api/trans");
-    // console.log(resp.data.transactions)
-    setallTrans(...[resp.data.transactions])
-    setTrans(...[resp.data.transactions])
+    var {data: { transactions }} = await axios.get("http://localhost:8080/api/trans");
+    console.log('ttt', transactions)
+    setAllTrans(transactions)
+    setSelected(transactions)
     console.log(allTrans)
-    var data = resp.data.transactions
-    setTotal(data.reduce((n, {cost}) => n + cost, 0))
+    setTotal(transactions.reduce((n, {cost}) => n + cost, 0))
     console.log(total)
 }
 
 
-
 function handleSelect(e){
-    const data = e.allTransId === -1
+    console.log('eeee', e)
+    const data = e.id === -1
         ? allTrans
-        : allTrans.filter(it=>it.id===e.allTransId)  || []
+        : allTrans.filter(it=>it.category===e.value)  || []
     setSelected(data); 
 };
 
@@ -71,94 +65,111 @@ const ToggleDelete = (o) => {
 
 const DeleteTransaction = async () =>{
 
-var resp = await axios.delete("http://localhost:8080/api/trans/"+ deleteId);
-getTransactions();
+    var resp = await axios.delete("http://localhost:8080/api/trans/"+ deleteId);
+    getTransactions();
 
 }
 
-const FilterTrans = (text)=>{
-    console.log(text)
-    setallTrans(
-        trans.filter((o)=>{
+const filterTrans = (text)=>{
+    console.log('yyy', text)
+    setSelected(
+        allTrans.filter((o)=>{
             return o.tname.includes(text)
         })
     )
 }
 
-console.log('selected',selected);
-
-
-
 useEffect(()=>{
     getTransactions();
     },[])
-    
+const handleDelete = (id) => {
+    setDeleteId(id)
+    ToggleDelete()
+}   
 
+const handleEdit = (o)=>{
+    history.push('/edittransaction',{params: o})
+}
+
+function Trans () {
+    return (
+        <div className="homeTransaction">
+        {!!selected.length && 
+            selected.map((o)=> (
+             <Link to={{ pathname: '/opentransaction', state: { o } }}>
+                <Transaction 
+                    handleEdit={()=>handleEdit(o)}
+                    handleDelete={()=>handleDelete(o.id)}
+                    category={o.category} 
+                    cost={o.cost} 
+                    item={o.tname}
+                    status={o.status} 
+                />
+            </Link>    
+            ))
+        }
+    </div>
+    )
+}
 
     return(
         <div className="homeCont">
-            <div className="homeHeader">
-                
-            </div>
+            <div className="homeHeader" /> 
+    
             <div className="logo">
                 <p>Overview</p>
                 <img src="./Logo.png"/>  
             </div>
+
             <div className="searchBar">
-                <Searchbar onChange={(e)=>{
-                    FilterTrans(e.target.value);
-                }}/>
+                <Searchbar onChange={(e)=> filterTrans(e.target.value) } />
             </div>
+
             <div className="totalCont">
                 <div className="totalAmount">
                     <TotalAmount amount = {total}/>
                 </div>
+
                 <div className="dropDown">
-                    <DropDown data={optionCategory}
-                    onChange={handleSelect}/>
+                    <DropDown 
+                        data={optionCategory}
+                        onChange={handleSelect}
+                    />
                 </div>
+
                 <div className="selection">
                     <Selection/>
                 </div>  
             </div>
+
             <div className="historyCont">
                 <div className="homeDate">
                     <Date/>
                 </div>
                 
                 <div className="DeletePopUp">
-                <Delete active={PopUp} bgChange={modalVisible} Cancel={()=>{
-                    SetPopUp(false);
-                    setModalVisible(!modalVisible);
-                    console.log("Cancel");
+                    <Delete 
+                        active={PopUp} 
+                        bgChange={modalVisible} 
+                        Cancel={()=>{
+                            SetPopUp(false);
+                            setModalVisible(!modalVisible);
+                            console.log("Cancel");
+                        }}
+                        Delete={()=>{
+                            DeleteTransaction();
+                            setModalVisible(!modalVisible);
+                            SetPopUp(false);
+                    }}/>
+                    <div className="BgColorChange">
+                        <BackgroundChange bgChange={modalVisible}/>
+                    </div>
+                </div>
+                <Trans />
+            </div>
 
-                }}
-                Delete={()=>{
-                    DeleteTransaction();
-                    setModalVisible(!modalVisible);
-                    SetPopUp(false);
-                }}/><div className="BgColorChange">
-                <BackgroundChange bgChange={modalVisible}/>
-            </div>
-                </div>
-                <div className="homeTransaction">
-                    {!!selected.length && 
-                        allTrans.map((o)=>{
-                            return <Link to={{ pathname: '/opentransaction', state: { o } }}>
-                            <Transaction handleEdit={()=>{
-                                history.push('/edittransaction',{params: o})
-                            }}handleDelete={()=>{
-                                setDeleteId(o.id)
-                                ToggleDelete()
-                            }}
-                            category={o.category} cost={o.cost} status={o.status} item={o.tname}
-                            ></Transaction>
-                            </Link>    
-                        })
-                    }
-                </div>
-            </div>
-            <div className="BackgroundDelete"></div>
+            <div className="BackgroundDelete" />
+
             <div className="addItem">
                 <Link to ="/addtransaction"><AddItem/></Link>
             </div>

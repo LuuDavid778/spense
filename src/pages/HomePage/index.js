@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Searchbar from '../../comps/Searchbar';
 import TotalAmount from '../../comps/TotalAmount';
 import DropDown from '../../comps/DropDown';
-import Selection from '../../comps/Selection';
-import Date from '../../comps/Date';
+// import Selection from '../../comps/Selection';
+// import Date from '../../comps/Date';
 import Transaction from '../../comps/Transaction';
 import AddItem from '../../comps/AddItem';
 import Category from '../../comps/Category';
@@ -117,15 +117,15 @@ useEffect(()=>{
                     <DropDown data={optionCategory}
                     onChange={handleSelect}/>
                 </div>
-                <div className="selection">
+                {/* <div className="selection">
                     <Selection/>
-                </div>  
+                </div>   */}
             </div>
             <div className="historyCont">
-                <div className="homeDate">
+                {/* <div className="homeDate">
                     <Date/>
                 </div>
-                
+                 */}
                 <div className="DeletePopUp">
                 <Delete active={PopUp} bgChange={modalVisible} Cancel={()=>{
                     SetPopUp(false);

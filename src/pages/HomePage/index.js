@@ -37,6 +37,7 @@ const [total, setTotal] = useState()
 const [allTrans, setallTrans]= useState([]);
 const [selected, setSelected] = useState(fakedb);
 const [deleteId, setDeleteId] = useState();
+const [trans, setTrans]=useState([])
 
 const handleOnClick = () => history.push('/edittransaction');
 
@@ -46,9 +47,9 @@ const getTransactions = async () => {
     var resp = await axios.get("http://localhost:8080/api/trans");
     // console.log(resp.data.transactions)
     setallTrans(...[resp.data.transactions])
+    setTrans(...[resp.data.transactions])
     console.log(allTrans)
     var data = resp.data.transactions
-    // setTotal(allTrans.reduce((n, {cost}) => n + cost, 0))
     setTotal(data.reduce((n, {cost}) => n + cost, 0))
     console.log(total)
 }
@@ -75,7 +76,14 @@ getTransactions();
 
 }
 
-
+const FilterTrans = (text)=>{
+    console.log(text)
+    setallTrans(
+        trans.filter((o)=>{
+            return o.tname.includes(text)
+        })
+    )
+}
 
 console.log('selected',selected);
 
@@ -97,7 +105,9 @@ useEffect(()=>{
                 <img src="./Logo.png"/>  
             </div>
             <div className="searchBar">
-                <Searchbar/>
+                <Searchbar onChange={(e)=>{
+                    FilterTrans(e.target.value);
+                }}/>
             </div>
             <div className="totalCont">
                 <div className="totalAmount">

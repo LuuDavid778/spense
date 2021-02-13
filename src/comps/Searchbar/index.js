@@ -31,7 +31,7 @@ font-size: 20px;
 
 
 
-const Searchbar = ({placeholder, value}) => {
+const Searchbar = ({placeholder, value, onChange}) => {
 
     const [inputValue, setInputValue] = useState("")
 
@@ -39,9 +39,7 @@ const Searchbar = ({placeholder, value}) => {
 
     return <Container>
         <img src="./searchIcon.png"/>
-        <Search placeholder={placeholder} onChange={(e)=>{
-         setInputValue(e.target.value);
-        }}></Search>
+        <Search placeholder={placeholder} onChange={onChange}></Search>
     </Container>
 }
 
